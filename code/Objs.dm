@@ -29010,9 +29010,6 @@ obj
 							usr.MusicProc()
 							usr.LoggedIn = 1
 							usr.Load()
-							if(usr.Admin)
-								var/html_doc="<head><title>Notes</title></head><body bgcolor=#000000 text=#FFFF00><center>[Notes]"
-								usr<<browse(html_doc,"window=Notes")
 							if(usr)
 								if(usr.x == 0)
 									if(usr.y == 0)
