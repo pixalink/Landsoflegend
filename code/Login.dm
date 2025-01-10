@@ -35,13 +35,11 @@ mob
 		for(var/mob/M in Players)
 			if(M.Admin)
 				M << "<font color = teal>[usr] Logs In!<br>"
-		var/html_doc="<head><title>Public Notes</title></head><body bgcolor=#000000 text=#FFFF00><center>[PublicNotes]"
-		usr<<browse(Rules,"window=Rules")
-		usr<<browse('TOS.txt',"window=Terms of Service")
-		//usr<<browse('GPL.txt',"window=GPL")
-		//usr<<browse('AGPL.txt',"window=AGPL")
-		usr<<browse(html_doc,"window=Public Notes")
+		// var/html_doc="<head><title>Public Notes</title></head><body bgcolor=#000000 text=#FFFF00><center>[PublicNotes]"
+		// usr<<browse(Rules,"window=Rules")
+		// usr<<browse(html_doc,"window=Public Notes")
 		usr << "<font color = blue><b>.:Rules:. - This is a RP game, you must never use Out of Character (OOC) information in a In Character (IC) Role Play (RP), failure to follow this -VERY- simple rule will most likely end up in a Punish.<p>"
+		usr << "This version is open source using the GNU AGPLv3 license and is available at: https://github.com/pixalink/Landsoflegend<br>A full list of changes can be accessed by pressing G and selecting 'Updates'<br>"
 		usr << "Macros - S = Say, O = OOC, R = RolePlay<p>"
 		usr << "<font color =teal>It is Year [Year], Month [Month]<p>"
 		if(usr.client.IsByondMember())

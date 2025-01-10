@@ -3,6 +3,7 @@ config
 logs
 map
 players
+test
 *.dmb
 *.rsc
 *.int
