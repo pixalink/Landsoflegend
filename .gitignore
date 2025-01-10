@@ -1,10 +1,10 @@
 .vscode
-# config
-# logs
-# map
-# players
-# *.dmb
-# *.rsc
-# *.int
-# *.lk
-# ErrorLog.txt
+config
+logs
+map
+players
+*.dmb
+*.rsc
+*.int
+*.lk
+ErrorLog.txt
