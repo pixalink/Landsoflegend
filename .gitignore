@@ -1,0 +1,9 @@
+.vscode
+# config
+# logs
+# map
+# players
+# *.dmb
+# *.rsc
+# *.int
+# ErrorLog.txt
