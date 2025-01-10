@@ -11,13 +11,13 @@ world
 	New()
 		log = file("ErrorLog.txt")
 
-		// @TODO: clean this up further to reduce start up time
-		spawn(1) LoadMisc()
-		spawn(1) CreateOre()
-		spawn(1) LoadMap()
-		spawn(1) DayNightCyle()
-		spawn(1) WorldTileModifications()
-		spawn(1) WorldTick()
+		// @TODO: clean up map loading to reduce start up time
+		LoadMisc()
+		LoadMap()
+		WorldTileModifications()
+		CreateOre()
+		DayNightCyle()
+		WorldTick()
 
 proc/WorldTileModifications()
 	// @TODO: figure out wtf this actually does
