@@ -47,12 +47,12 @@ proc
 	/////////////////////
 	dd_hasprefix(text, prefix)
 		var/start = 1
-		var/end = lentext(prefix) + 1
+		var/end = length(prefix) + 1
 		return findtext(text, prefix, start, end)
 
 	dd_hasPrefix(text, prefix)
 		var/start = 1
-		var/end = lentext(prefix) + 1
+		var/end = length(prefix) + 1
 		return findtextEx(text, prefix, start, end)
 
 
@@ -71,8 +71,8 @@ proc
 	// Turning text into lists //
 	/////////////////////////////
 	dd_text2list(text, separator)
-		var/textlength      = lentext(text)
-		var/separatorlength = lentext(separator)
+		var/textlength      = length(text)
+		var/separatorlength = length(separator)
 		var/list/textList   = new /list()
 		var/searchPosition  = 1
 		var/findPosition    = 1
@@ -91,8 +91,8 @@ proc
 					return textList
 
 	dd_text2List(text, separator)
-		var/textlength      = lentext(text)
-		var/separatorlength = lentext(separator)
+		var/textlength      = length(text)
+		var/separatorlength = length(separator)
 		var/list/textList   = new /list()
 		var/searchPosition  = 1
 		var/findPosition    = 1
@@ -269,9 +269,9 @@ proc
 //is in the other string at the same spot (assuming it is not a replace char).
 //This is used for fingerprints
 	var/newtext = text
-	if(lentext(text) != lentext(compare))
+	if(length(text) != length(compare))
 		return 0
-	for(var/i = 1, i < lentext(text), i++)
+	for(var/i = 1, i < length(text), i++)
 		var/a = copytext(text,i,i+1)
 		var/b = copytext(compare,i,i+1)
 //if it isn't both the same letter, or if they are both the replacement character
@@ -291,7 +291,7 @@ proc
 	if(!text || !character)
 		return 0
 	var/count = 0
-	for(var/i = 1, i <= lentext(text), i++)
+	for(var/i = 1, i <= length(text), i++)
 		var/a = copytext(text,i,i+1)
 		if(a == character)
 			count++
@@ -376,4 +376,3 @@ var/list/binary = list("0","1")
 		temp = findtextEx(haystack, ascii2text(text2ascii(needles,i)), start, end)	//Note: ascii2text(text2ascii) is faster than copytext()
 		if(temp)	end = temp
 	return end
-

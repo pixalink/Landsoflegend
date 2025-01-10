@@ -1126,7 +1126,7 @@ mob
 			for(var/mob/M in hearers(SpeakRange,src))
 				var/NewText = null
 				var/Text = null
-				var/TextLength = lentext(T)
+				var/TextLength = length(T)
 				var/Understands = 0
 				if(src.CurrentLanguage)
 					for(var/obj/Misc/Languages/HL in M.LangKnow)
@@ -1144,7 +1144,7 @@ mob
 				if(Understands == 0)
 					M.LearnRaceLanguages("[src.CurrentLanguage]")
 				while(TextLength >= 1)
-					Text ="[copytext(T,(lentext(T)-TextLength)+1,(lentext(T)-TextLength)+2)]"
+					Text ="[copytext(T,(length(T)-TextLength)+1,(length(T)-TextLength)+2)]"
 					var/Change = 0
 					Change = prob(100 - Understands)
 					if(Change)
@@ -1152,7 +1152,7 @@ mob
 						NewText+="[M.TextOutput]"
 						M.TextOutput = null
 					if(Change == 0)
-						NewText+="[copytext(T,(lentext(T)-TextLength)+1,(lentext(T)-TextLength)+2)]"
+						NewText+="[copytext(T,(length(T)-TextLength)+1,(length(T)-TextLength)+2)]"
 					TextLength--
 				if(src.OrginalName == null)
 					M << "<font color=teal>[src] says in [SL.name]: [NewText]<br>"

@@ -2230,11 +2230,11 @@ obj
 									usr << "<font color = teal>This Spell seems to be written in [src.WrittenIn]. You are able to understand [Know.WritePercent]% Written [src.WrittenIn] currently.<br>"
 								else
 									usr << "<font color = teal>You have no idea what Language it is written in.<br>"
-								var/TextLength = lentext(src.desc)
+								var/TextLength = length(src.desc)
 								var/Text = null
 								var/NewText = null
 								while(TextLength >= 1)
-									Text ="[copytext(src.desc,(lentext(src.desc)-TextLength)+1,(lentext(src.desc)-TextLength)+2)]"
+									Text ="[copytext(src.desc,(length(src.desc)-TextLength)+1,(length(src.desc)-TextLength)+2)]"
 									var/Change = 0
 									var/Changes = 0
 									if(Know)
@@ -2247,7 +2247,7 @@ obj
 										NewText+="[usr.TextOutput]"
 										usr.TextOutput = null
 									if(Change == 0)
-										NewText+="[copytext(src.desc,(lentext(src.desc)-TextLength)+1,(lentext(src.desc)-TextLength)+2)]"
+										NewText+="[copytext(src.desc,(length(src.desc)-TextLength)+1,(length(src.desc)-TextLength)+2)]"
 									TextLength--
 								usr << "<font color = teal>You attempt to read the spell in your head.<p>[NewText]<br>"
 								return
@@ -15235,7 +15235,7 @@ obj
 												var/obj/SL = usr.CurrentLanguage
 												var/NewText = null
 												var/Text = null
-												var/TextLength = lentext(T)
+												var/TextLength = length(T)
 												var/Understands = 0
 												if(usr.CurrentLanguage)
 													for(var/obj/Misc/Languages/HL in Found.LangKnow)
@@ -15253,7 +15253,7 @@ obj
 												if(Understands == 0)
 													Found.LearnRaceLanguages("[usr.CurrentLanguage]")
 												while(TextLength >= 1)
-													Text ="[copytext(T,(lentext(T)-TextLength)+1,(lentext(T)-TextLength)+2)]"
+													Text ="[copytext(T,(length(T)-TextLength)+1,(length(T)-TextLength)+2)]"
 													var/Change = 0
 													Change = prob(100 - Understands)
 													if(Change)
@@ -15261,7 +15261,7 @@ obj
 														NewText+="[Found.TextOutput]"
 														Found.TextOutput = null
 													if(Change == 0)
-														NewText+="[copytext(T,(lentext(T)-TextLength)+1,(lentext(T)-TextLength)+2)]"
+														NewText+="[copytext(T,(length(T)-TextLength)+1,(length(T)-TextLength)+2)]"
 													TextLength--
 												Found << "<font color=red>You hear [usr]'s voice in your head (In [SL.name]): [Safe_Guard(NewText)]<br>"
 												usr << "<font color=red>[Found] hears your voice (In [SL.name]): [Safe_Guard(NewText)]<br>"
@@ -28218,7 +28218,7 @@ obj
 									var/obj/SL = usr.CurrentLanguage
 									var/NewText = null
 									var/Text = null
-									var/TextLength = lentext(T)
+									var/TextLength = length(T)
 									var/Understands = 0
 									if(usr.CurrentLanguage)
 										for(var/obj/Misc/Languages/HL in Found.LangKnow)
@@ -28236,7 +28236,7 @@ obj
 									if(Understands == 0)
 										Found.LearnRaceLanguages("[usr.CurrentLanguage]")
 									while(TextLength >= 1)
-										Text ="[copytext(T,(lentext(T)-TextLength)+1,(lentext(T)-TextLength)+2)]"
+										Text ="[copytext(T,(length(T)-TextLength)+1,(length(T)-TextLength)+2)]"
 										var/Change = 0
 										Change = prob(100 - Understands)
 										if(Change)
@@ -28244,7 +28244,7 @@ obj
 											NewText+="[Found.TextOutput]"
 											Found.TextOutput = null
 										if(Change == 0)
-											NewText+="[copytext(T,(lentext(T)-TextLength)+1,(lentext(T)-TextLength)+2)]"
+											NewText+="[copytext(T,(length(T)-TextLength)+1,(length(T)-TextLength)+2)]"
 										TextLength--
 									Found << "<font color=red>You hear [usr]'s voice in your head (In [SL.name]): [Safe_Guard(NewText)]<br>"
 									usr << "<font color=red>[Found] hears your voice (In [SL.name]): [Safe_Guard(NewText)]<br>"
@@ -28419,7 +28419,6 @@ obj
 							usr.CurrentLanguage = L
 							usr << "<font color = green>You will now speak [L.name] - You are [L.SpeakPercent]% fluent in this language, and Write [L.WritePercent]% correctly in it.<br>"
 					if(Result == "Help")
-						var/Finish_Later_Using_HTML
 						var/list/helpmenu = new()
 						helpmenu += "Mining"
 						helpmenu += "Tree Chopping"
@@ -28676,7 +28675,7 @@ obj
 					if(findtext(T,"}",1,0))
 						Cant = 1
 					if(Cant == 0)
-						var/TextLength = lentext(T)
+						var/TextLength = length(T)
 						while(TextLength)
 							TextLength -= 1
 							usr.RPpoints += 0.001
@@ -28730,7 +28729,7 @@ obj
 					for(var/mob/M in hearers(6,usr))
 						var/NewText = null
 						var/Text = null
-						var/TextLength = lentext(T)
+						var/TextLength = length(T)
 						var/Understands = 0
 						if(usr.CurrentLanguage)
 							for(var/obj/Misc/Languages/HL in M.LangKnow)
@@ -28748,7 +28747,7 @@ obj
 						if(Understands == 0)
 							M.LearnRaceLanguages("[usr.CurrentLanguage]")
 						while(TextLength >= 1)
-							Text ="[copytext(T,(lentext(T)-TextLength)+1,(lentext(T)-TextLength)+2)]"
+							Text ="[copytext(T,(length(T)-TextLength)+1,(length(T)-TextLength)+2)]"
 							var/Change = 0
 							Change = prob(100 - Understands)
 							if(Change)
@@ -28756,7 +28755,7 @@ obj
 								NewText+="[M.TextOutput]"
 								M.TextOutput = null
 							if(Change == 0)
-								NewText+="[copytext(T,(lentext(T)-TextLength)+1,(lentext(T)-TextLength)+2)]"
+								NewText+="[copytext(T,(length(T)-TextLength)+1,(length(T)-TextLength)+2)]"
 							TextLength--
 						if(usr.OrginalName == null)
 							M << "<font color=teal>[usr] says in [SL.name]: [Safe_Guard(NewText)]<br>"
@@ -28772,7 +28771,7 @@ obj
 						if(findtext(T,"}",1,0))
 							Cant = 1
 						if(Cant == 0)
-							var/SayLength = lentext(T)
+							var/SayLength = length(T)
 							while(SayLength)
 								SayLength -= 1
 								usr.RPpoints += 0.0005

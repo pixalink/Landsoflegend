@@ -7,7 +7,7 @@ world
 	status = "Lands of Legend - Version 0.63"
 	hub = "Godsring.LandsofLegend"
 	hub_password = ""
-	loop_checks = 0
+	//loop_checks = 0
 	tick_lag = 0.75
 	New()
 		log = file("ErrorLog.txt")
@@ -15,7 +15,6 @@ world
 		CreateOre()
 		LoadMap()
 		DayNightCyle()
-		var/Finish_Remote_Server_Access
 		for(var/turf/T in block(locate(98,42,3),locate(114,38,3)))
 			var/InTiles = 0
 			if(T in Tiles)
