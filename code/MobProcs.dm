@@ -1817,15 +1817,20 @@ mob
 				src.GiveHair()
 
 			if(src.Race == "Ratling")
-				var/Colour = rand(1,4)
-				if(Colour == 1)
-					src.icon = 'ratling brown.dmi'
-				if(Colour == 2)
-					src.icon = 'ratling black.dmi'
-				if(Colour == 3)
-					src.icon = 'ratling.dmi'
-				if(Colour == 4)
-					src.icon = 'ratling white.dmi'
+				var/list/menu = new()
+				menu += "Gray"
+				menu += "White"
+				menu += "Black"
+				menu += "Brown"
+				switch(input("Choose fur color.", "Choose", null) in menu)
+					if("Gray")
+						src.icon = 'ratling.dmi'
+					if("White")
+						src.icon = 'ratling white.dmi'
+					if("Black")
+						src.icon = 'ratling black.dmi'
+					if("Brown")
+						src.icon = 'ratling brown.dmi'
 				src.loc = locate(27,80,3)
 				src.icon_state = "N"
 				src.PregType = "Womb"
@@ -2227,15 +2232,20 @@ mob
 				src.GiveHair()
 
 			if(src.Race == "Wolfman")
-				var/Colour = rand(1,4)
-				if(Colour == 1)
-					src.icon = 'wolfman gray.dmi'
-				if(Colour == 2)
-					src.icon = 'wolfman black.dmi'
-				if(Colour == 3)
-					src.icon = 'wolfman brown.dmi'
-				if(Colour == 4)
-					src.icon = 'wolfman white.dmi'
+				var/list/menu = new()
+				menu += "Gray"
+				menu += "White"
+				menu += "Black"
+				menu += "Brown"
+				switch(input("Choose fur color.", "Choose", null) in menu)
+					if("Gray")
+						src.icon = 'wolfman gray.dmi'
+					if("White")
+						src.icon = 'wolfman white.dmi'
+					if("Black")
+						src.icon = 'wolfman black.dmi'
+					if("Brown")
+						src.icon = 'wolfman brown.dmi'
 				src.icon_state = "N"
 				src.PregType = "Womb"
 				src.WeightMax = 150
