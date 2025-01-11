@@ -607,23 +607,6 @@ obj
 		WeaponDamageMax = 0
 		WeaponDamageMin = 0
 
-		//Spells
-		WrittenIn = null
-		Comprehensible = 0
-		SpellWords = null
-		MagicUsed = null
-		SpellEffect = null
-
-		BookContents = list()
-
-		Red = 0
-		Green = 0
-		Blue = 0
-		tmp/PreviousPages = list()
-		tmp/FuturePages = list()
-
-
-
 atom
 	proc
 		make_image(icon/icon,icon_state,layer)
