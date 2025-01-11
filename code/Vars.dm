@@ -662,7 +662,6 @@ atom
 						L.loc = locate(src.x,src.y,Z)
 						for(var/turf/T in range(0,L))
 							T.icon_state = "clouds"
-							T.Supported = 0
 							T.density = 1
 							T.overlays -= /obj/Misc/FireLarge/
 							Tiles += T
