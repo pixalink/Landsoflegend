@@ -988,7 +988,7 @@ client
 							view(M) << "<font color = yellow>[M] suddenly falls to the ground grasping their heart. It seems they have died of old age and suffered a massive heart attack!<br>"
 							M.Death()
 		world << "<font color =green><b>It is now Year [Year], Month [Month]<br>"
-		world << "<font color = teal><font size = 3>Visit <a href=http://z4.invisionfree.com/Lands_of_Legend/index.php?showtopic=264>This Guide</a> for help on how to play Lands of Legend! Or press G for an in game Help Menu.<br>"
+		world << "<font color = teal><font size = 3>Press G for an in game Help Menu on how to play Lands of Legend!<br>"
 
 
 
