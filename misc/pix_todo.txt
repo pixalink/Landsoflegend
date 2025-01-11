@@ -1,0 +1,9 @@
+----
+bugs
+----
+[ ] turning off the music doesn't keep it turned off
+
+----
+needs attention
+----
+[ ] the map saving/loading needs rewritten. it should not use a separate file for every tile
