@@ -1,4 +1,12 @@
 obj
+	proc
+		Rot()
+			spawn(2000)
+				if(src)
+					view(src) << "<font color = yellow>The stump rots and falls apart!<br>"
+					src.icon = null
+					src.Fuel = 0
+
 	Items
 		Plants
 			icon = 'plants.dmi'

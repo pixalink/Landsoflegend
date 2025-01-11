@@ -1,4 +1,119 @@
 obj
+	proc
+		RangedMove()
+			if(src)
+				if(src.Target)
+					var/turf/T = src.Target
+					step_towards(src,T)
+					for(var/atom/A in range(0,src))
+						if(ismob(A) && A != src.Owner)
+							var/mob/M = A
+							if(M.Dead == 0)
+								var/mob/Own = src.Owner
+								if(M.Target == null)
+									M.Target = Own
+								if(M.Weapon)
+									var/obj/S = M.Weapon
+									if(S.Type == "Shield")
+										var/Block = 0 + M.Agility / 3 + M.ShieldSkill / 3
+										var/Blocks = prob(Block)
+										if(Blocks)
+											view(6,src) << "<font color = red>[M] blocks the [src] using their [S]!<br>"
+											Own.CombatSkillTransfer(M)
+											if(M && M.Target == null)
+												M.Target = src.Owner
+											del(src)
+											return
+								if(M.Weapon2)
+									var/obj/S = M.Weapon2
+									if(S.Type == "Shield")
+										var/Block = 0 + M.Agility / 3 + M.ShieldSkill / 3
+										var/Blocks = prob(Block)
+										if(Blocks)
+											view(6,src) << "<font color = red>[M] blocks the [src] using their [S]!<br>"
+											Own.CombatSkillTransfer(M)
+											if(M && M.Target == null)
+												M.Target = src.Owner
+											del(src)
+											return
+								var/Dodge = 0 + M.Agility / 2
+								var/DodgeMath = 0
+								for(var/obj/Items/Armour/Ar in M)
+									if(Ar.suffix == "Equip")
+										DodgeMath += Ar.Weight / 3
+								if(M.Strength <= DodgeMath)
+									Dodge -= DodgeMath
+								var/Dodges = prob(Dodge)
+								if(Dodges && M.Fainted == 0 && M.Stunned == 0)
+									view(6,src) << "<font color = red>[M] dodges the [src]!<br>"
+									src.suffix = null
+									src.Target = null
+									Own.CombatSkillTransfer(M)
+									if(M && M.Target == null)
+										M.Target = src.Owner
+									src.Owner = null
+									return
+								var/Bat = 0 + M.CurrentSkillLevel / 5 + M.Agility / 2.5
+								var/BatMath = 0
+								for(var/obj/Items/Armour/Ar in M)
+									if(Ar.suffix == "Equip")
+										BatMath += Ar.Weight / 3
+								if(M.Strength <= BatMath)
+									Bat -= BatMath
+								var/Bats = prob(Bat)
+								if(Bats && M.Fainted == 0 && M.Stunned == 0)
+									view(6,src) << "<font color = red>[M] bats [src] away!<br>"
+									src.suffix = null
+									src.Target = null
+									Own.CombatSkillTransfer(M)
+									if(M && M.Target == null)
+										M.Target = src.Owner
+									src.Owner = null
+									return
+								var/Miss = 60 - Own.RangedSkill * 2
+								if(Miss <= 5)
+									Miss = 5
+								var/Misses = prob(Miss)
+								if(Misses)
+									view(6,src) << "<font color = red>[src] misses its target!<br>"
+									src.suffix = null
+									src.Target = null
+									Own.CombatSkillTransfer(M)
+									if(M && M.Target == null)
+										M.Target = src.Owner
+									src.Owner = null
+									return
+								view(6,src) << "<font color = red>[src] flies into [M]!<br>"
+								src.suffix = null
+								if(src.Type >= 1)
+									M.ArrowDamage(src.Type,src)
+								if(M && M.Target == null)
+									M.Target = src.Owner
+								var/Gain = 25 - Own.RangedSkill / 3
+								if(Gain <= 2)
+									Gain = 2
+								var/Gains = prob(Gain)
+								if(Gains)
+									if(Own.RangedSkill <= Own.SkillCap && Own.RangedSkill <= WorldSkillsCap)
+										Own.RangedSkill += Own.RangedSkillMulti
+								Own.CombatSkillTransfer(M)
+								src.Owner = null
+								return
+						if(isturf(A))
+							if(A.density && A.opacity)
+								view(6,src) << "<font color = red>[src] hits [A] and breaks!<br>"
+								del(src)
+								return
+					if(src && src.Target in range(0,src))
+						src.suffix = null
+						src.Owner = null
+						return
+				else
+					src.suffix = null
+					src.Owner = null
+					return
+			spawn(1) src.RangedMove()
+
 	Items
 		Ammo
 			WoodenArrow

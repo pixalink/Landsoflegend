@@ -1,4 +1,49 @@
 obj
+	proc
+		ForgeBurn(var/Time)
+			spawn(Time)
+				if(src)
+					view(src) << "<font color = yellow>The [src] begins to run out of fuel!<br>"
+					src.desc = "This Stone Forge seems to be very low on fuel!<br>"
+					spawn(500)
+						if(src)
+							var/Burn = 0
+							for(var/obj/Items/Resources/Coal/C in src)
+								Burn += 2000
+								del(C)
+							for(var/obj/Items/Resources/Charcoal/Ch in src)
+								Burn += 500
+								del(Ch)
+							if(Burn >= 1)
+								src.ForgeBurn(Burn)
+							else
+								view(src) << "<font color = red>The [src] burns out!<br>"
+								src.desc = "This Stone Forge seems to have been lit recently, but ran out of fuel!<br>"
+								src.icon_state = "forge"
+								src.Type = "Not Lit"
+								return
+		SkeletonRaise()
+			spawn(rand(300,600))
+				if(src)
+					var/Rise = 0
+					Rise = prob(50)
+					if(Rise == 0)
+						return
+					if(Rise)
+						var/HasBones = null
+						for(var/obj/Items/Misc/Bones/B in range(0,src))
+							if(B.suffix == null)
+								HasBones = B
+								break
+						if(HasBones)
+							view(src) << "<font color =purple>[src] begins to shake violently for a moment. Suddenly all the bones around it begin to animate and turn into an undead skeleton!<br>"
+							var/mob/NPC/Evil/Undead/Undead_Skeleton/S = new
+							S.loc = src.loc
+							S.PickUpObjects()
+							del(HasBones)
+							del(src)
+							return
+
 	Items
 		Misc
 			Skull
