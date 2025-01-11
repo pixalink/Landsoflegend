@@ -168,50 +168,13 @@ mob
 				S.Move(src.loc)
 				S.name = "[src]'s skull"
 				S.SkeletonRaise()
-			src << "<font color=red>You have died!<br>"
+			src << "<font color=red>You have died! Wait for another player to drag your corpse to a priest or relog to make a new character.<br>"
 			if(src.Soul)
 				src.icon = 'characters.dmi'
 				src.icon_state = "ghost"
 			else
 				del(src)
-			if(src.client)
-				src.RemakeChoice()
 			return
-		RemakeChoice()
-			var/list/menu = new()
-			menu += "Remake"
-			menu += "Remain Dead"
-			var/Result = input(src,"You have died. - Remaking will allow you to keep all of your stats and all of your skills, but your name, gender, race and IC knowledge will be lost. You will however be able to choose your race again, along with a new name and gender. Remaining dead will simply leave you as a ghost until someone revives you or your body is destroyed. Relogging will open this option up again.", "Choose", null) in menu
-			if(Result == "Remake")
-				for(var/obj/HUD/H in src.client.screen)
-					del(H)
-				src.loc = locate(11,11,2)
-				src.CanEatRawMeats = 0
-				src.CanSwimWell = 0
-				src.CanRegenLimbs = 0
-				src.CanBreathe = 1
-				src.CanTakeDamage = 1
-				src.CanUseTK = 0
-				src.Pain = 0
-				src.LoggedIn = 0
-				src.Dead = 0
-				src.Age = 0
-				src.Born = 0
-				src.DieAge = 10000000
-				src.DisableAttack = 1
-				src.Fainted = 0
-				src.Stunned = 0
-				src.density = 0
-				src.invisibility = 0
-				src.CanMove = 0
-				src.luminosity = 0
-				src.icon = null
-				src.Race = null
-				src.Gender = null
-				src.Faction = null
-				var/player_sav = "players/[src.ckey].sav"
-				if(length(file(player_sav)))
-					fdel(player_sav)
 		High(var/Dur)
 			if(src.client == null)
 				return
@@ -5369,8 +5332,6 @@ mob
 					src.luminosity = 0
 					src.density = 1
 					src.GoreCheck()
-				else
-					src.RemakeChoice()
 			var/CurrentAge = Year - src.Born
 			src.Age = CurrentAge
 			if(src.Age <= 0)
