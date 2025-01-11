@@ -1,10 +1,6 @@
 ----
 bugs
 ----
-[ ] -OOC- Justin93Daniels: Gotcha.  Did y'all also fix the Female Human Sprites?
--OOC- Justin93Daniels: There's an old typo in No Legs, No Left Arm.  It's worded "NoLegsNoLL", when it should be "NoLegsNoLA" or something like that.
--OOC- Justin93Daniels: Which means, should a female human have both legs and her left arm removed, she'd turn invisible.
-
 [ ] snakeman merchant is spawned with boots he shouldn't be able to wear
 
 ----
