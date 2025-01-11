@@ -96,7 +96,7 @@ obj
 
 		WeaponDamageMax = 0
 		WeaponDamageMin = 0
-		
+
 	proc
 		RandomItem()
 			var/MadeItem = 1
@@ -745,6 +745,18 @@ obj
 					C.loc = src.loc
 					view(src) << "<font color = purple>The [src] swirls and crackles with chaotic energy, suddenly the [src] flares violently and expells a strange dark mist of pure energy!<br>"
 					ChaosGate()
+		CreateChaos()
+			if(src)
+				var/num = rand(5,8)
+				while(num)
+					num -= 1
+					var/obj/Misc/OtherWorldly/ChaosEnergy/E = new
+					E.loc = locate(src.x,src.y,src.z)
+					E.dir = rand(1,12)
+			else
+				return
+			spawn(9)
+				CreateChaos()
 		MoveRand()
 			step_rand(src)
 			spawn(5) MoveRand()
