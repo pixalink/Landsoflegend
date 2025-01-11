@@ -1,7 +1,6 @@
 ----
 bugs
 ----
-[ ] snakeman merchant is spawned with boots he shouldn't be able to wear
 
 ----
 needs attention

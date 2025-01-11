@@ -7716,8 +7716,6 @@ mob
 								src.Gender = "Male"
 							if(Gen == 2)
 								src.Gender = "Female"
-								src.icon = 'human(F).dmi'
-								src.GiveHair()
 							src.GiveRaceLanguages()
 							src.Selling = list()
 							for(var/obj/Items/It in orange(7,src))
@@ -8778,24 +8776,10 @@ mob
 							src.Gender = "Male"
 						if(Gen == 2)
 							src.Gender = "Female"
-							src.icon = 'human(F).dmi'
-							src.GiveHair()
 						var/obj/Items/Armour/UpperBody/LeatherVest/V = new
 						src.WUpperBody = V
 						V.suffix = "Equip"
 						V.loc = src
-						var/obj/Items/Armour/Legs/LeatherLeggings/LL = new
-						src.WLegs = LL
-						LL.suffix = "Equip"
-						LL.loc = src
-						var/obj/Items/Armour/LeftFoot/LeatherBootLeft/LBL = new
-						src.WLeftFoot = LBL
-						LBL.suffix = "Equip"
-						LBL.loc = src
-						var/obj/Items/Armour/RightFoot/LeatherBootRight/LBR = new
-						src.WRightFoot = LBR
-						LBR.suffix = "Equip"
-						LBR.loc = src
 						var/obj/Items/Armour/LeftArm/LeatherGloveLeft/LGL = new
 						src.WLeftHand = LGL
 						LGL.suffix = "Equip"
@@ -8810,9 +8794,6 @@ mob
 							Z.layer = Z.ItemLayer
 						src.overlays+=image(LGR.icon,LGR.icon_state,LGR.ItemLayer)
 						src.overlays+=image(LGL.icon,LGL.icon_state,LGL.ItemLayer)
-						src.overlays+=image(LBR.icon,LBR.icon_state,LBR.ItemLayer)
-						src.overlays+=image(LBL.icon,LBL.icon_state,LBL.ItemLayer)
-						src.overlays+=image(LL.icon,LL.icon_state,LL.ItemLayer)
 						src.overlays+=image(V.icon,V.icon_state,V.ItemLayer)
 						src.GiveRaceLanguages()
 						src.Selling = list()
