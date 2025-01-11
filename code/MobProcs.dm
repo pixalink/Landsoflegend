@@ -138,7 +138,6 @@ mob
 				if(src.client)
 					B.Owner = src.name
 					B.BodysKey = src.key
-					B.BodyKeyCheck()
 				B.Move(src.loc)
 				var/icon/I = new(B.icon)
 				I.Turn(90)

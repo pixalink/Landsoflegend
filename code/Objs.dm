@@ -208,19 +208,6 @@ obj
 				I.Turn(90)
 				W.icon = I
 				src.overlays += W
-		BodyKeyCheck()
-			for(var/mob/M in range(1,src))
-				if(M.Dead == 0 && M.client && M.key == src.BodysKey)
-					var/Kick = 0
-					if(M.Function == "PickUp")
-						Kick = 1
-					if(M.Function == "Pull")
-						Kick = 1
-					if(Kick)
-						M.loc = M.LastLoc
-						world << "<font color = teal><b>[M] was kicked for interacting with their previous body!<br>"
-						del(M)
-			spawn(1) src.BodyKeyCheck()
 		RandomItem()
 			var/MadeItem = 1
 			if(src.Type == "RandomResource")
