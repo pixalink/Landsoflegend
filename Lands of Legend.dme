@@ -14,6 +14,7 @@
 // BEGIN_INCLUDE
 #include "code\AntiSpam.dm"
 #include "code\Atoms.dm"
+#include "code\Client.dm"
 #include "code\Combat.dm"
 #include "code\config.dm"
 #include "code\Crafting.dm"
