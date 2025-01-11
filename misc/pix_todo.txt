@@ -1,6 +1,9 @@
 ----
 bugs
 ----
+[ ] the Death() proc isn't actually resetting the combat target when a mob dies.
+this is leading to not being able to attack after using the remake choice,
+and who knows what other sorts of unseen problems
 
 ----
 needs attention
