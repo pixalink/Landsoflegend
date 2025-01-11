@@ -5,6 +5,10 @@ bugs
 ----
 needs attention
 ----
+[ ] -OOC- Pvt Wado: Can't even open gates by walking into them anymore
+-OOC- Pvt Wado: There was a time where you could open them by walking into them with interact on
+
+
 [ ] the map saving/loading needs rewritten. it should not use a separate file for every tile
 
 [ ] need to auto delete garbage items left laying around
