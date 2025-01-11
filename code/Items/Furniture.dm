@@ -609,7 +609,7 @@ obj
 					Dura = 400
 					CanBeCrafted = 1
 					Material = "Stone"
-					Click()
+					Click(location, control, params)
 						if(usr.Function == "Interact" && usr.Ref)
 							if(usr in range(1,src))
 								if(isobj(usr.Ref))
@@ -1211,7 +1211,11 @@ obj
 									usr << "<b>You cant pick that item up!<br>"
 									return
 						if(usr.Function == "Interact" && src.suffix == "Stuck")
-							switch(alert("Knock on the door, or open/close it?",,"Cancel","Knock","Open/Close"))
+							var/list/MouseParams = params2list(params)
+							var/Action = "Open/Close"
+							if(MouseParams["ctrl"])
+								Action = "Knock"
+							switch(Action)
 								if("Knock")
 									var/CanOpen = 0
 									if(usr in range(1,src))
@@ -1286,11 +1290,15 @@ obj
 					Dura = 1000
 					CanBeCrafted = 1
 					Material = "Stone"
-					Click()
+					Click(location, control, params)
 						if(usr.Function == "Examine")
 							usr << "<font color=teal>[src.desc]"
 						if(usr.Function == "Interact" && src.suffix == "Stuck")
-							switch(alert("Knock on the door, or open/close it?",,"Cancel","Knock","Open/Close"))
+							var/list/MouseParams = params2list(params)
+							var/Action = "Open/Close"
+							if(MouseParams["ctrl"])
+								Action = "Knock"
+							switch(Action)
 								if("Knock")
 									var/CanOpen = 0
 									if(usr in range(1,src))
@@ -2060,7 +2068,7 @@ obj
 						L.KeyCode = rand(1000,10000)
 						L.Dura = 3000
 						src.KeyCode = L.KeyCode
-					Click()
+					Click(location, control, params)
 						if(usr.Function == "Interact" && usr.Ref)
 							if(usr in range(1,src))
 								if(isobj(usr.Ref))
@@ -2487,7 +2495,11 @@ obj
 										usr << "<font color = red>You take a good look at the [src] but have no idea how to create one...<br>"
 							return
 						if(usr.Function == "Interact" && src.suffix == "Stuck")
-							switch(alert("Knock on the door, or open/close it?",,"Cancel","Knock","Open/Close"))
+							var/list/MouseParams = params2list(params)
+							var/Action = "Open/Close"
+							if(MouseParams["ctrl"])
+								Action = "Knock"
+							switch(Action)
 								if("Knock")
 									var/CanOpen = 0
 									if(usr in range(1,src))
@@ -2559,7 +2571,7 @@ obj
 					Dura = 450
 					CanBeCrafted = 1
 					Material = "Iron"
-					Click()
+					Click(location, control, params)
 						if(usr.Function == "Interact" && usr.Ref)
 							if(usr in range(1,src))
 								if(isobj(usr.Ref))
@@ -3199,7 +3211,11 @@ obj
 									usr << "<b>You cant pick that item up!<br>"
 									return
 						if(usr.Function == "Interact" && src.suffix == "Stuck")
-							switch(alert("Knock on the door, or open/close it?",,"Cancel","Knock","Open/Close"))
+							var/list/MouseParams = params2list(params)
+							var/Action = "Open/Close"
+							if(MouseParams["ctrl"])
+								Action = "Knock"
+							switch(Action)
 								if("Knock")
 									var/CanOpen = 0
 									if(usr in range(1,src))
@@ -3274,7 +3290,7 @@ obj
 					Dura = 150
 					CanBeCrafted = 1
 					Material = "Wood"
-					Click()
+					Click(location, control, params)
 						if(usr.Function == "Interact" && usr.Ref)
 							if(usr in range(1,src))
 								if(isobj(usr.Ref))
@@ -3882,7 +3898,11 @@ obj
 									usr << "<b>You cant pick that item up!<br>"
 									return
 						if(usr.Function == "Interact" && src.suffix == "Stuck")
-							switch(alert("Knock on the door, or open/close it?",,"Cancel","Knock","Open/Close"))
+							var/list/MouseParams = params2list(params)
+							var/Action = "Open/Close"
+							if(MouseParams["ctrl"])
+								Action = "Knock"
+							switch(Action)
 								if("Knock")
 									var/CanOpen = 0
 									if(usr in range(1,src))
