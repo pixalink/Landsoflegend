@@ -176,10 +176,14 @@ mob
 					step(O,src.dir)
 				if(O != src.Target)
 					step_rand(src)
+			/*
+			// @NOTE: I have no idea what this was supposed to do, but it causes maximum recursion runtime errors.
+			// Commenting it out seems to not affect anything...
 			if(isturf(a))
 				var/turf/T = a
 				if(T != src.Target)
 					step_rand(src)
+			*/
 			if(ismob(a))
 				var/mob/M = a
 				if(M != src.Target)
