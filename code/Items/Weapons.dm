@@ -1,4 +1,85 @@
 obj
+	proc
+		DemonicSwordMagic()
+			var/mob/L = null
+			if(ismob(src.loc))
+				L = src.loc
+			if(src.suffix == "Equip")
+				var/WillSpeak = prob(10)
+				if(WillSpeak)
+					var/Speaks = rand(1,10)
+					if(Speaks == 1)
+						Speaks = "Kill everything..."
+					if(Speaks == 2)
+						Speaks = "Release me..."
+					if(Speaks == 3)
+						Speaks = "Feed the swords hunger..."
+					if(Speaks == 4)
+						Speaks = "Give in to your emotions..."
+					if(Speaks == 5)
+						Speaks = "Allow me to enter your world through you..."
+					if(Speaks == 6)
+						Speaks = "I can make you powerful..."
+					if(Speaks == 7)
+						Speaks = "Can you feel the power?!..."
+					if(Speaks == 8)
+						Speaks = "Embrace the darkness..."
+					if(Speaks == 9)
+						Speaks = "Ha...ha...ha..."
+					if(Speaks == 10)
+						Speaks = "Crush...Kill...Destroy ..."
+					for(var/mob/M in src)
+						if(L)
+							M.loc = L.loc
+							M.Speak(Speaks,0)
+							M.loc = src
+				if(L)
+					for(var/mob/M in orange(1,L))
+						if(M.client)
+							var/Attack = prob(25)
+							if(Attack)
+								view(6,L) << "<font color = yellow>[src] flares furiously as [L]'s eyes seem to glaze over. [L] attempts to strike out towards [M], having been temporarily possessed by the strange Blade.<br>"
+								L.Target = M
+					var/BreakOut = prob(1 - L.Strength / 100 - L.Intelligence / 100)
+					if(src.Dura <= 1)
+						BreakOut = 1
+					if(BreakOut)
+						view(6,L) << "<font color = purple>[src] begins to ignite furiously with Demonic Flame. Having used [L]'s blood energy, the Demon within the Blade breaks loose!<br>"
+						for(var/mob/M in src)
+							M.loc = L.loc
+							M.CancelDefaultProc = 0
+							M.NormalAI()
+							M.Target = L
+						L.Weight -= src.Weight
+						L.overlays-=image(src.icon,src.icon_state,src.ItemLayer)
+						L.DeleteInventoryMenu()
+						if(L.InvenUp)
+							L.InvenUp = 0
+						del(src)
+						return
+			else
+				var/WillSpeak = prob(10)
+				if(WillSpeak)
+					var/Speaks = rand(1,5)
+					if(Speaks == 1)
+						Speaks = "Use the sword..."
+					if(Speaks == 2)
+						Speaks = "Only through using the sword will you become mighty..."
+					if(Speaks == 3)
+						Speaks = "The sword will make you powerful..."
+					if(Speaks == 4)
+						Speaks = "You must use the sword, it is the only way to save your world..."
+					if(Speaks == 5)
+						Speaks = "Only in using the sword can you hope to save everything you love..."
+					for(var/mob/M in src)
+						if(L)
+							M.loc = L.loc
+							M.Speak(Speaks,0)
+							M.loc = src
+			spawn(100)
+				if(src)
+					src.DemonicSwordMagic()
+
 	Items
 		Weapons
 			layer = 5

@@ -1,4 +1,15 @@
 obj
+	proc
+		CoinAdjust()
+			if(src.Type >= 5)
+				src.icon_state = "gold coin >5"
+			if(src.Type >= 10)
+				src.icon_state = "gold coin >10"
+			if(src.Type >= 50)
+				src.icon_state = "gold coin >50"
+			if(src.Type >= 100)
+				src.icon_state = "gold coin >100"
+
 	Items
 		Currency
 			icon = 'misc.dmi'

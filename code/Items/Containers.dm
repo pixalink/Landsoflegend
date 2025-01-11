@@ -1,4 +1,401 @@
 obj
+	proc
+		TreasureChest()
+			if(src.Type == "HasTreasure")
+				var/obj/Items/Currency/GoldCoin/G = new
+				G.loc = src
+				G.suffix = "Carried"
+				G.Type = rand(1,20)
+				G.name = "[G.Type] Gold Coins"
+				G.CoinAdjust()
+				G.overlays+=image(/obj/HUD/C/)
+				var/Items = rand(0,3)
+				while(Items)
+					Items -= 1
+					var/ItemType = rand(1,2)
+					if(ItemType == 1)
+						ItemType = 0
+						ItemType = rand(1,10)
+						if(ItemType == 1)
+							var/Chest = list()
+							Chest += typesof(/obj/Items/Armour/Chest/)
+							for(var/O in Chest)
+								var/obj/I = new O()
+								if(I.CanBeCrafted)
+									var/Metal = 0
+									if(I.BaseMaterial == "Metal")
+										Metal = 1
+									if(Metal)
+										var/Choose = prob(50)
+										if(Choose)
+											var/Make = rand(1,3)
+											var/Mat = null
+											if(Make == 1)
+												Mat = "Iron"
+											if(Make == 2)
+												Mat = "Copper"
+											if(Make == 3)
+												Mat = "Gold"
+											var/obj/A = new I.type()
+											A.suffix = "Carried"
+											A.layer = 100
+											A.Material = Mat
+											A.RandomItemQuality()
+											A.name = "[A.Material] [A]"
+											A.icon_state = A.CarryState
+											A.overlays += image(/obj/HUD/C/)
+											A.loc = src
+											break
+										else
+											del(I)
+									else
+										del(I)
+						if(ItemType == 2)
+							var/LeftArm = list()
+							LeftArm += typesof(/obj/Items/Armour/LeftArm/)
+							for(var/O in LeftArm)
+								var/obj/I = new O()
+								if(I.CanBeCrafted)
+									var/Metal = 0
+									if(I.BaseMaterial == "Metal")
+										Metal = 1
+									if(Metal)
+										var/Choose = prob(50)
+										if(Choose)
+											var/Make = rand(1,3)
+											var/Mat = null
+											if(Make == 1)
+												Mat = "Iron"
+											if(Make == 2)
+												Mat = "Copper"
+											if(Make == 3)
+												Mat = "Gold"
+											var/obj/A = new I.type()
+											A.suffix = "Carried"
+											A.layer = 100
+											A.Material = Mat
+											A.RandomItemQuality()
+											A.name = "[A.Material] [A]"
+											A.icon_state = A.CarryState
+											A.overlays += image(/obj/HUD/C/)
+											A.loc = src
+											break
+										else
+											del(I)
+									else
+										del(I)
+						if(ItemType == 3)
+							var/RightArm = list()
+							RightArm += typesof(/obj/Items/Armour/RightArm/)
+							for(var/O in RightArm)
+								var/obj/I = new O()
+								if(I.CanBeCrafted)
+									var/Metal = 0
+									if(I.BaseMaterial == "Metal")
+										Metal = 1
+									if(Metal)
+										var/Choose = prob(50)
+										if(Choose)
+											var/Make = rand(1,3)
+											var/Mat = null
+											if(Make == 1)
+												Mat = "Iron"
+											if(Make == 2)
+												Mat = "Copper"
+											if(Make == 3)
+												Mat = "Gold"
+											var/obj/A = new I.type()
+											A.suffix = "Carried"
+											A.layer = 100
+											A.Material = Mat
+											A.RandomItemQuality()
+											A.name = "[A.Material] [A]"
+											A.icon_state = A.CarryState
+											A.overlays += image(/obj/HUD/C/)
+											A.loc = src
+											break
+										else
+											del(I)
+									else
+										del(I)
+						if(ItemType == 4)
+							var/LeftFoot = list()
+							LeftFoot += typesof(/obj/Items/Armour/LeftFoot/)
+							for(var/O in LeftFoot)
+								var/obj/I = new O()
+								if(I.CanBeCrafted)
+									var/Metal = 0
+									if(I.BaseMaterial == "Metal")
+										Metal = 1
+									if(Metal)
+										var/Choose = prob(50)
+										if(Choose)
+											var/Make = rand(1,3)
+											var/Mat = null
+											if(Make == 1)
+												Mat = "Iron"
+											if(Make == 2)
+												Mat = "Copper"
+											if(Make == 3)
+												Mat = "Gold"
+											var/obj/A = new I.type()
+											A.suffix = "Carried"
+											A.layer = 100
+											A.Material = Mat
+											A.RandomItemQuality()
+											A.name = "[A.Material] [A]"
+											A.icon_state = A.CarryState
+											A.overlays += image(/obj/HUD/C/)
+											A.loc = src
+											break
+										else
+											del(I)
+									else
+										del(I)
+						if(ItemType == 5)
+							var/RightFoot = list()
+							RightFoot += typesof(/obj/Items/Armour/RightFoot/)
+							for(var/O in RightFoot)
+								var/obj/I = new O()
+								if(I.CanBeCrafted)
+									var/Metal = 0
+									if(I.BaseMaterial == "Metal")
+										Metal = 1
+									if(Metal)
+										var/Choose = prob(50)
+										if(Choose)
+											var/Make = rand(1,3)
+											var/Mat = null
+											if(Make == 1)
+												Mat = "Iron"
+											if(Make == 2)
+												Mat = "Copper"
+											if(Make == 3)
+												Mat = "Gold"
+											var/obj/A = new I.type()
+											A.suffix = "Carried"
+											A.layer = 100
+											A.Material = Mat
+											A.RandomItemQuality()
+											A.name = "[A.Material] [A]"
+											A.icon_state = A.CarryState
+											A.overlays += image(/obj/HUD/C/)
+											A.loc = src
+											break
+										else
+											del(I)
+									else
+										del(I)
+						if(ItemType == 6)
+							var/Legs = list()
+							Legs += typesof(/obj/Items/Armour/Legs/)
+							for(var/O in Legs)
+								var/obj/I = new O()
+								if(I.CanBeCrafted)
+									var/Metal = 0
+									if(I.BaseMaterial == "Metal")
+										Metal = 1
+									if(Metal)
+										var/Choose = prob(50)
+										if(Choose)
+											var/Make = rand(1,3)
+											var/Mat = null
+											if(Make == 1)
+												Mat = "Iron"
+											if(Make == 2)
+												Mat = "Copper"
+											if(Make == 3)
+												Mat = "Gold"
+											var/obj/A = new I.type()
+											A.suffix = "Carried"
+											A.layer = 100
+											A.Material = Mat
+											A.RandomItemQuality()
+											A.name = "[A.Material] [A]"
+											A.icon_state = A.CarryState
+											A.overlays += image(/obj/HUD/C/)
+											A.loc = src
+											break
+										else
+											del(I)
+									else
+										del(I)
+						if(ItemType == 7)
+							var/Shields = list()
+							Shields += typesof(/obj/Items/Armour/Shields/)
+							for(var/O in Shields)
+								var/obj/I = new O()
+								if(I.CanBeCrafted)
+									var/Metal = 0
+									if(I.BaseMaterial == "Metal")
+										Metal = 1
+									if(Metal)
+										var/Choose = prob(100)
+										if(Choose)
+											var/Make = rand(1,2)
+											var/Mat = null
+											if(Make == 1)
+												Mat = "Iron"
+											if(Make == 2)
+												Mat = "Copper"
+											var/obj/A = new I.type()
+											A.suffix = "Carried"
+											A.layer = 100
+											A.Material = Mat
+											A.RandomItemQuality()
+											A.name = "[A.Material] [A]"
+											A.icon_state = A.CarryState
+											A.overlays += image(/obj/HUD/C/)
+											A.loc = src
+											break
+										else
+											del(I)
+									else
+										del(I)
+					if(ItemType == 2)
+						ItemType = 0
+						ItemType = rand(1,5)
+						if(ItemType == 1)
+							var/Swords = list()
+							Swords += typesof(/obj/Items/Weapons/Swords/)
+							for(var/O in Swords)
+								var/obj/I = new O()
+								if(I.CanBeCrafted)
+									var/Choose = prob(25)
+									if(Choose)
+										var/Make = rand(1,3)
+										var/Mat = null
+										if(Make == 1)
+											Mat = "Iron"
+										if(Make == 2)
+											Mat = "Copper"
+										if(Make == 3)
+											Mat = "Silver"
+										var/obj/A = new I.type()
+										A.suffix = "Carried"
+										A.layer = 100
+										A.Material = Mat
+										A.RandomItemQuality()
+										A.name = "[A.Material] [A]"
+										A.icon_state = A.CarryState
+										A.overlays += image(/obj/HUD/C/)
+										A.loc = src
+										break
+									else
+										del(I)
+						if(ItemType == 2)
+							var/Axes = list()
+							Axes += typesof(/obj/Items/Weapons/Axes/)
+							for(var/O in Axes)
+								var/obj/I = new O()
+								if(I.CanBeCrafted)
+									var/Choose = prob(50)
+									if(Choose)
+										var/Make = rand(1,3)
+										var/Mat = null
+										if(Make == 1)
+											Mat = "Iron"
+										if(Make == 2)
+											Mat = "Copper"
+										if(Make == 3)
+											Mat = "Silver"
+										var/obj/A = new I.type()
+										A.suffix = "Carried"
+										A.layer = 100
+										A.Material = Mat
+										A.RandomItemQuality()
+										A.name = "[A.Material] [A]"
+										A.icon_state = A.CarryState
+										A.overlays += image(/obj/HUD/C/)
+										A.loc = src
+										break
+									else
+										del(I)
+						if(ItemType == 3)
+							var/Blunts = list()
+							Blunts += typesof(/obj/Items/Weapons/Blunts/)
+							for(var/O in Blunts)
+								var/obj/I = new O()
+								if(I.CanBeCrafted)
+									var/Choose = prob(25)
+									if(Choose)
+										var/Make = rand(1,3)
+										var/Mat = null
+										if(Make == 1)
+											Mat = "Iron"
+										if(Make == 2)
+											Mat = "Copper"
+										if(Make == 3)
+											Mat = "Silver"
+										var/obj/A = new I.type()
+										A.suffix = "Carried"
+										A.layer = 100
+										A.Material = Mat
+										A.RandomItemQuality()
+										A.name = "[A.Material] [A]"
+										A.icon_state = A.CarryState
+										A.overlays += image(/obj/HUD/C/)
+										A.loc = src
+										break
+									else
+										del(I)
+						if(ItemType == 4)
+							var/Spears = list()
+							Spears += typesof(/obj/Items/Weapons/Spears/)
+							for(var/O in Spears)
+								var/obj/I = new O()
+								if(I.CanBeCrafted)
+									var/Choose = prob(100)
+									if(Choose)
+										var/Make = rand(1,3)
+										var/Mat = null
+										if(Make == 1)
+											Mat = "Iron"
+										if(Make == 2)
+											Mat = "Copper"
+										if(Make == 3)
+											Mat = "Silver"
+										var/obj/A = new I.type()
+										A.suffix = "Carried"
+										A.layer = 100
+										A.Material = Mat
+										A.RandomItemQuality()
+										A.name = "[A.Material] [A]"
+										A.icon_state = A.CarryState
+										A.overlays += image(/obj/HUD/C/)
+										A.loc = src
+										break
+									else
+										del(I)
+						if(ItemType == 5)
+							var/Daggers = list()
+							Daggers += typesof(/obj/Items/Weapons/Daggers/)
+							for(var/O in Daggers)
+								var/obj/I = new O()
+								if(I.CanBeCrafted)
+									var/Choose = prob(50)
+									if(Choose)
+										var/Make = rand(1,3)
+										var/Mat = null
+										if(Make == 1)
+											Mat = "Iron"
+										if(Make == 2)
+											Mat = "Copper"
+										if(Make == 3)
+											Mat = "Silver"
+										var/obj/A = new I.type()
+										A.suffix = "Carried"
+										A.layer = 100
+										A.Material = Mat
+										A.RandomItemQuality()
+										A.name = "[A.Material] [A]"
+										A.icon_state = A.CarryState
+										A.overlays += image(/obj/HUD/C/)
+										A.loc = src
+										break
+									else
+										del(I)
+
 	Items
 		Containers
 			Dura = 100

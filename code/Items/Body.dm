@@ -1,4 +1,49 @@
 obj
+	proc
+		AddBodyWounds(var/mob/m)
+			src.WoundLeftArm = m.WoundLeftArm
+			src.WoundRightArm = m.WoundRightArm
+			src.WoundLeftLeg = m.WoundLeftLeg
+			src.WoundRightLeg = m.WoundRightLeg
+			src.WoundHead = m.WoundHead
+			src.WoundTorso = m.WoundTorso
+			if(src.WoundLeftLeg)
+				var/obj/W = src.WoundLeftLeg
+				var/icon/I = new(W.icon)
+				I.Turn(90)
+				W.icon = I
+				src.overlays += W
+			if(src.WoundRightLeg)
+				var/obj/W = src.WoundRightLeg
+				var/icon/I = new(W.icon)
+				I.Turn(90)
+				W.icon = I
+				src.overlays += W
+			if(src.WoundLeftArm)
+				var/obj/W = src.WoundLeftArm
+				var/icon/I = new(W.icon)
+				I.Turn(90)
+				W.icon = I
+				src.overlays += W
+			if(src.WoundRightArm)
+				var/obj/W = src.WoundRightArm
+				var/icon/I = new(W.icon)
+				I.Turn(90)
+				W.icon = I
+				src.overlays += W
+			if(src.WoundTorso)
+				var/obj/W = src.WoundTorso
+				var/icon/I = new(W.icon)
+				I.Turn(90)
+				W.icon = I
+				src.overlays += W
+			if(src.WoundHead)
+				var/obj/W = src.WoundHead
+				var/icon/I = new(W.icon)
+				I.Turn(90)
+				W.icon = I
+				src.overlays += W
+
 	Items
 		Body
 			Fuel = 90

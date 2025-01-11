@@ -1,4 +1,13 @@
 obj
+	proc
+		CreateLeather()
+			spawn(rand(1000,3000))
+				if(src)
+					if(src.icon_state != "Dry Leather Hide")
+						src.icon_state = "Dry Leather Hide"
+						src.name = "Dry [src.name]"
+						src.Type = "Dry"
+
 	Items
 		Resources
 			GoldOre

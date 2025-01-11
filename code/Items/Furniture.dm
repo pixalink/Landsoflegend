@@ -1,4 +1,42 @@
 obj
+	proc
+		GateFunctions(var/J)
+			if(J == "Open")
+				for(var/obj/Items/Furniture/Doors/IronGate/G in range(1,src))
+					if(G.Type != "Busy")
+						G.Type = "Busy"
+						G.GateFunctions("Open")
+						flick("gate opening",G)
+						spawn(12)
+							if(G)
+								G.icon_state = "gate open"
+								G.density = 0
+								G.Type = null
+				spawn(100)
+					for(var/obj/Items/Furniture/Doors/IronGate/G in range(1,src))
+						if(G.Type != "Busy" && G.icon_state != "gate")
+							G.Type = "Busy"
+							G.GateFunctions("Close")
+							flick("gate closing",G)
+							spawn(12)
+								if(G)
+									G.icon_state = "gate"
+									G.density = 1
+									G.Type = null
+				return
+			if(J == "Close")
+				for(var/obj/Items/Furniture/Doors/IronGate/G in range(1,src))
+					if(G.Type != "Busy")
+						G.Type = "Busy"
+						G.GateFunctions("Close")
+						flick("gate closing",G)
+						spawn(12)
+							if(G)
+								G.icon_state = "gate"
+								G.density = 1
+								G.Type = null
+				return
+
 	Items
 		Furniture
 			Doors
