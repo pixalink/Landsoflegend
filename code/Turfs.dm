@@ -150,6 +150,15 @@ area
 			else
 				return(1)
 turf
+	var
+		OrePath = null
+
+		Supported = 0
+
+		ManMade = 0 // Makes it so the AddObjects proc wont place boulders onto this turf
+
+		AttachedKey = null
+		
 	proc
 		Regrow()
 			spawn(rand(300,600))

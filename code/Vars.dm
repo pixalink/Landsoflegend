@@ -229,16 +229,6 @@ mob
 		FatherAgility = 0
 		FatherEndurance = 0
 
-
-turf
-	var
-		OrePath = null
-
-		Supported = 0
-
-		ManMade = 0 // Makes it so the AddObjects proc wont place boulders onto this turf
-
-		AttachedKey = null
 atom
 	DblClick()
 		if(usr.Function == "Interact")
