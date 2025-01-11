@@ -15,9 +15,9 @@ mob
 					I.icon_state = I.CarryState
 				if(I.Delete)
 					del(I)
-			if(src.OrginalName)
-				src.name = src.OrginalName
-				src.OrginalName = null
+			if(src.OriginalName)
+				src.name = src.OriginalName
+				src.OriginalName = null
 			if(src.StoredFaction)
 				src.Faction = src.StoredFaction
 				src.StoredFaction = null
@@ -960,9 +960,9 @@ mob
 								O.icon_state = O.CarryState
 								O.layer = 20
 								Suspect.DeleteInventoryMenu()
-								if(Suspect.OrginalName)
-									Suspect.name = Suspect.OrginalName
-									Suspect.OrginalName = null
+								if(Suspect.OriginalName)
+									Suspect.name = Suspect.OriginalName
+									Suspect.OriginalName = null
 								if(Suspect.StoredFaction)
 									Suspect.Faction = Suspect.StoredFaction
 									Suspect.StoredFaction = null
@@ -1037,9 +1037,9 @@ mob
 								O.icon_state = O.CarryState
 								O.layer = 20
 								Suspect.DeleteInventoryMenu()
-								if(Suspect.OrginalName)
-									Suspect.name = Suspect.OrginalName
-									Suspect.OrginalName = null
+								if(Suspect.OriginalName)
+									Suspect.name = Suspect.OriginalName
+									Suspect.OriginalName = null
 								if(Suspect.StoredFaction)
 									Suspect.Faction = Suspect.StoredFaction
 									Suspect.StoredFaction = null
@@ -1163,10 +1163,10 @@ mob
 					if(Change == 0)
 						NewText+="[copytext(T,(length(T)-TextLength)+1,(length(T)-TextLength)+2)]"
 					TextLength--
-				if(src.OrginalName == null)
+				if(src.OriginalName == null)
 					M << "<font color=teal>[src] says in [SL.name]: [NewText]<br>"
 				else
-					M << "<font color=teal>([src.OrginalName])[src] says in [SL.name]: [NewText]<br>"
+					M << "<font color=teal>([src.OriginalName])[src] says in [SL.name]: [NewText]<br>"
 				if(Target)
 					Target << "<font color=teal>[src] says in [SL.name]: [NewText]<br>"
 		RaceRules()
@@ -1435,7 +1435,7 @@ mob
 				for(var/mob/M in Players)
 					if(M.Race == src.Race && M.Gender == "Female" && M.Preg == 2)
 						if(src.client.address == M.client.address && M != src)
-							world << "<font color = teal><b>([src.key])[src] - [src.OrginalName] was booted for Alt Key Interaction involving character creation!<br>"
+							world << "<font color = teal><b>([src.key])[src] - [src.OriginalName] was booted for Alt Key Interaction involving character creation!<br>"
 							del(src)
 							return
 						PlayerBorn = 1
@@ -1600,7 +1600,7 @@ mob
 				for(var/mob/M in Players)
 					if(M.Race == src.Race && M.Gender == "Female" && M.Preg == 2)
 						if(src.client.address == M.client.address && M != src)
-							world << "<font color = teal><b>([src.key])[src] - [src.OrginalName] was booted for Alt Key Interaction involving character creation!<br>"
+							world << "<font color = teal><b>([src.key])[src] - [src.OriginalName] was booted for Alt Key Interaction involving character creation!<br>"
 							del(src)
 							return
 						PlayerBorn = 1
@@ -1726,7 +1726,7 @@ mob
 				for(var/mob/M in Players)
 					if(M.Race == src.Race && M.Gender == "Female" && M.Preg == 2)
 						if(src.client.address == M.client.address && M != src)
-							world << "<font color = teal><b>([src.key])[src] - [src.OrginalName] was booted for Alt Key Interaction involving character creation!<br>"
+							world << "<font color = teal><b>([src.key])[src] - [src.OriginalName] was booted for Alt Key Interaction involving character creation!<br>"
 							del(src)
 							return
 						PlayerBorn = 1
@@ -1865,7 +1865,7 @@ mob
 				for(var/mob/M in Players)
 					if(M.Race == src.Race && M.Gender == "Female" && M.Preg == 2)
 						if(src.client.address == M.client.address && M != src)
-							world << "<font color = teal><b>([src.key])[src] - [src.OrginalName] was booted for Alt Key Interaction involving character creation!<br>"
+							world << "<font color = teal><b>([src.key])[src] - [src.OriginalName] was booted for Alt Key Interaction involving character creation!<br>"
 							del(src)
 							return
 						PlayerBorn = 1
@@ -2144,7 +2144,7 @@ mob
 				for(var/mob/M in Players)
 					if(M.Race == src.Race && M.Gender == "Female" && M.Preg == 2)
 						if(src.client.address == M.client.address && M != src)
-							world << "<font color = teal><b>([src.key])[src] - [src.OrginalName] was booted for Alt Key Interaction involving character creation!<br>"
+							world << "<font color = teal><b>([src.key])[src] - [src.OriginalName] was booted for Alt Key Interaction involving character creation!<br>"
 							del(src)
 							return
 						PlayerBorn = 1
@@ -2325,7 +2325,7 @@ mob
 				for(var/mob/M in Players)
 					if(M.Race == src.Race && M.Gender == "Female" && M.Preg == 2)
 						if(src.client.address == M.client.address && M != src)
-							world << "<font color = teal><b>([src.key])[src] - [src.OrginalName] was booted for Alt Key Interaction involving character creation!<br>"
+							world << "<font color = teal><b>([src.key])[src] - [src.OriginalName] was booted for Alt Key Interaction involving character creation!<br>"
 							del(src)
 							return
 						src.Strength += M.Strength / 8
@@ -2480,7 +2480,7 @@ mob
 				for(var/mob/M in Players)
 					if(M.Race == src.Race && M.Gender == "Female" && M.Preg == 2)
 						if(src.client.address == M.client.address && M != src)
-							world << "<font color = teal><b>([src.key])[src] - [src.OrginalName] was booted for Alt Key Interaction involving character creation!<br>"
+							world << "<font color = teal><b>([src.key])[src] - [src.OriginalName] was booted for Alt Key Interaction involving character creation!<br>"
 							del(src)
 							return
 						PlayerBorn = 1
@@ -4565,7 +4565,7 @@ mob
 					if(src.Admin)
 						ShowRace = "- [M.Race]"
 						ShowIP = "- [M.client.address]"
-					src << "([M.key])[M] - [M.OrginalName][ShowRace][ShowIP]"
+					src << "([M.key])[M] - [M.OriginalName][ShowRace][ShowIP]"
 					Num += 1
 			src << "Total - [Num]"
 			return

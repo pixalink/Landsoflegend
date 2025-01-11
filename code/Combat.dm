@@ -1256,9 +1256,9 @@ mob
 						I.overlays-=image(/obj/HUD/E/)
 						I.icon_state = I.CarryState
 						src << "<font color =red>Your [I] has been damaged badly!<br>"
-						if(src.OrginalName)
-							src.name = src.OrginalName
-							src.OrginalName = null
+						if(src.OriginalName)
+							src.name = src.OriginalName
+							src.OriginalName = null
 						if(src.StoredFaction)
 							src.Faction = src.StoredFaction
 							src.StoredFaction = null
@@ -1703,7 +1703,7 @@ mob
 			if(T.client)
 				if(src.client)
 					if(T.client.address == src.client.address && T != src)
-						world << "<font color = teal><b>([usr.key])[usr] - [usr.OrginalName] was booted for Alt Key Interaction!<br>"
+						world << "<font color = teal><b>([usr.key])[usr] - [usr.OriginalName] was booted for Alt Key Interaction!<br>"
 						del(src)
 						return
 			if(T.Sleeping)
@@ -4410,9 +4410,9 @@ mob
 													I.icon_state = I.CarryState
 													I.layer = 20
 													src.DeleteInventoryMenu()
-													if(src.OrginalName)
-														src.name = src.OrginalName
-														src.OrginalName = null
+													if(src.OriginalName)
+														src.name = src.OriginalName
+														src.OriginalName = null
 													if(src.StoredFaction)
 														src.Faction = src.StoredFaction
 														src.StoredFaction = null

@@ -139,8 +139,8 @@ obj
 									for(var/mob/M in world)
 										if(M.client)
 											menu2 += "[M.name]"
-											if(M.OrginalName)
-												menu2 += "[M.OrginalName]"
+											if(M.OriginalName)
+												menu2 += "[M.OriginalName]"
 											Mobs += M
 									menu2 += "Cancel"
 									var/Result2 = input("Choose someone you want to Locate.", "Choose", null) in menu2
@@ -151,7 +151,7 @@ obj
 										for(var/mob/M in Mobs)
 											if(M.name == Result2)
 												Found = M
-											if(M.OrginalName == Result2)
+											if(M.OriginalName == Result2)
 												Found = M
 										if(Found)
 											if(src in range(1,usr))
@@ -174,8 +174,8 @@ obj
 									for(var/mob/M in world)
 										if(M.client)
 											menu2 += "[M.name]"
-											if(M.OrginalName)
-												menu2 += "[M.OrginalName]"
+											if(M.OriginalName)
+												menu2 += "[M.OriginalName]"
 											Mobs += M
 									menu2 += "Cancel"
 									var/Result2 = input("Choose someone you want to Telepath.", "Choose", null) in menu2
@@ -186,7 +186,7 @@ obj
 										for(var/mob/M in Mobs)
 											if(M.name == Result2)
 												Found = M
-											if(M.OrginalName == Result2)
+											if(M.OriginalName == Result2)
 												Found = M
 										if(Found)
 											if(src in range(1,usr))

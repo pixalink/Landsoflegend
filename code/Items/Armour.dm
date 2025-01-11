@@ -4085,7 +4085,7 @@ obj
 									usr.DeleteInventoryMenu()
 									usr.CreateInventory()
 									if(src.Type == "Conceals")
-										usr.OrginalName = usr.name
+										usr.OriginalName = usr.name
 										usr.name = "Unknown"
 										usr.StoredFaction = usr.Faction
 										usr.Faction = "None"
@@ -4103,9 +4103,9 @@ obj
 									src.layer = 20
 									usr.DeleteInventoryMenu()
 									usr.CreateInventory()
-									if(usr.OrginalName)
-										usr.name = usr.OrginalName
-										usr.OrginalName = null
+									if(usr.OriginalName)
+										usr.name = usr.OriginalName
+										usr.OriginalName = null
 									if(usr.StoredFaction)
 										usr.Faction = usr.StoredFaction
 										usr.StoredFaction = null

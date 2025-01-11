@@ -1923,8 +1923,8 @@ obj
 						var/Mobs = list()
 						for(var/mob/M in world)
 							menu += "[M.name]"
-							if(M.OrginalName)
-								menu += "[M.OrginalName]"
+							if(M.OriginalName)
+								menu += "[M.OriginalName]"
 							Mobs += M
 						menu += "Cancel"
 						var/Result = input("Who do you wish to summon?", "Choose", null) in menu
@@ -1936,7 +1936,7 @@ obj
 							for(var/mob/M in Mobs)
 								if(M.name == Result)
 									Found = M
-								if(M.OrginalName == Result)
+								if(M.OriginalName == Result)
 									Found = M
 							if(Found)
 								Found.loc = usr.loc
@@ -1975,8 +1975,8 @@ obj
 								var/Mobs = list()
 								for(var/mob/M in world)
 									menu += "[M.name]"
-									if(M.OrginalName)
-										menu += "[M.OrginalName]"
+									if(M.OriginalName)
+										menu += "[M.OriginalName]"
 									Mobs += M
 								menu += "Cancel"
 								var/Result = input("Who do you wish to teleport to?", "Choose", null) in menu
@@ -1988,7 +1988,7 @@ obj
 									for(var/mob/M in Mobs)
 										if(M.name == Result)
 											Found = M
-										if(M.OrginalName == Result)
+										if(M.OriginalName == Result)
 											Found = M
 									if(Found)
 										usr.loc = Found.loc
@@ -2131,8 +2131,8 @@ obj
 						var/Mobs = list()
 						for(var/mob/M in world)
 							menu += "[M.name]"
-							if(M.OrginalName)
-								menu += "[M.OrginalName]"
+							if(M.OriginalName)
+								menu += "[M.OriginalName]"
 							Mobs += M
 						menu += "Cancel"
 						var/Result = input("Who do you wish to In-Prison?", "Choose", null) in menu
@@ -2144,7 +2144,7 @@ obj
 							for(var/mob/M in Mobs)
 								if(M.name == Result)
 									Found = M
-								if(M.OrginalName == Result)
+								if(M.OriginalName == Result)
 									Found = M
 							if(Found)
 								switch(alert("Send them to a Prison, or to Hell?",,"Prison","Hell"))
@@ -2207,8 +2207,8 @@ obj
 								var/Mobs = list()
 								for(var/mob/M in Players)
 									menu += "[M.name]"
-									if(M.OrginalName)
-										menu += "[M.OrginalName]"
+									if(M.OriginalName)
+										menu += "[M.OriginalName]"
 									Mobs += M
 								menu += "Cancel"
 								var/Result = input("Who do you wish to Mute?", "Choose", null) in menu
@@ -2220,7 +2220,7 @@ obj
 									for(var/mob/M in Mobs)
 										if(M.name == Result)
 											Found = M
-										if(M.OrginalName == Result)
+										if(M.OriginalName == Result)
 											Found = M
 									if(Found)
 										if(Found.Muted == 0)
@@ -2327,8 +2327,8 @@ obj
 							var/Mobs = list()
 							for(var/mob/M in world)
 								menu2 += "[M.name]"
-								if(M.OrginalName)
-									menu2 += "[M.OrginalName]"
+								if(M.OriginalName)
+									menu2 += "[M.OriginalName]"
 								Mobs += M
 							menu2 += "Cancel"
 							var/Result2 = input("Who do you wish to Check?", "Choose", null) in menu2
@@ -2340,7 +2340,7 @@ obj
 								for(var/mob/M in Mobs)
 									if(M.name == Result2)
 										Found = M
-									if(M.OrginalName == Result2)
+									if(M.OriginalName == Result2)
 										Found = M
 								if(Found)
 									for(var/obj/Items/I in Found)
@@ -2564,8 +2564,8 @@ obj
 							var/Mobs = list()
 							for(var/mob/M in Players)
 								players += "[M.name]"
-								if(M.OrginalName)
-									players += "[M.OrginalName]"
+								if(M.OriginalName)
+									players += "[M.OriginalName]"
 								Mobs += M
 							players += "Cancel"
 							var/Results = input("Read Which Log?", "Choose", null) in players
@@ -2577,7 +2577,7 @@ obj
 								for(var/mob/M in Mobs)
 									if(M.name == Results)
 										Found = M
-									if(M.OrginalName == Results)
+									if(M.OriginalName == Results)
 										Found = M
 								if(Found)
 									usr<<browse(file("logs/Log([Found.key]).html"))
@@ -2609,7 +2609,7 @@ obj
 										return
 									if("Yes")
 										src.icon_state = "reboot off"
-										world << "<font color=yellow><font size =10>Server will now shut down - ([usr.key])[usr] - [usr.OrginalName]<br>"
+										world << "<font color=yellow><font size =10>Server will now shut down - ([usr.key])[usr] - [usr.OriginalName]<br>"
 										usr.Log_admin("([usr.key])[usr] shuts the world down")
 										SaveMap()
 										SaveMisc()
@@ -2699,8 +2699,8 @@ obj
 								for(var/mob/M in world)
 									if(M.client)
 										menu += "[M.name]"
-										if(M.OrginalName)
-											menu += "[M.OrginalName]"
+										if(M.OriginalName)
+											menu += "[M.OriginalName]"
 										Mobs += M
 								menu += "Cancel"
 								var/Result = input("Who do you wish to Reward with a Race?", "Choose", null) in menu
@@ -2712,7 +2712,7 @@ obj
 									for(var/mob/M in Mobs)
 										if(M.name == Result)
 											Found = M
-										if(M.OrginalName == Result)
+										if(M.OriginalName == Result)
 											Found = M
 									if(Found)
 										var/list/races = new()
@@ -2740,8 +2740,8 @@ obj
 							for(var/mob/M in world)
 								if(M.client)
 									menu += "[M.name]"
-									if(M.OrginalName)
-										menu += "[M.OrginalName]"
+									if(M.OriginalName)
+										menu += "[M.OriginalName]"
 									Mobs += M
 							menu += "Cancel"
 							var/Result = input("Who do you wish to Reward with a Language?", "Choose", null) in menu
@@ -2753,7 +2753,7 @@ obj
 								for(var/mob/M in Mobs)
 									if(M.name == Result)
 										Found = M
-									if(M.OrginalName == Result)
+									if(M.OriginalName == Result)
 										Found = M
 								if(Found)
 									var/Langs = list()
@@ -2796,8 +2796,8 @@ obj
 									var/Mobs = list()
 									for(var/mob/M in world)
 										menu2 += "[M.name]"
-										if(M.OrginalName)
-											menu2 += "[M.OrginalName]"
+										if(M.OriginalName)
+											menu2 += "[M.OriginalName]"
 										Mobs += M
 									menu2 += "Cancel"
 									var/Result2 = input("Who do you wish to Rank as [Result]?", "Choose", null) in menu2
@@ -2809,7 +2809,7 @@ obj
 										for(var/mob/M in Mobs)
 											if(M.name == Result2)
 												Found = M
-											if(M.OrginalName == Result2)
+											if(M.OriginalName == Result2)
 												Found = M
 										if(Found)
 											Found.GiveRank(Result)
@@ -2845,8 +2845,8 @@ obj
 									var/Mobs = list()
 									for(var/mob/M in Players)
 										menu += "[M.name]"
-										if(M.OrginalName)
-											menu += "[M.OrginalName]"
+										if(M.OriginalName)
+											menu += "[M.OriginalName]"
 										Mobs += M
 									menu += "Cancel"
 									var/Result = input("Who do you wish to Reward?", "Choose", null) in menu
@@ -2858,7 +2858,7 @@ obj
 										for(var/mob/M in Mobs)
 											if(M.name == Result)
 												Found = M
-											if(M.OrginalName == Result)
+											if(M.OriginalName == Result)
 												Found = M
 										if(Found)
 											usr << "<font color = teal>[Found] has [Found.Strength] Strength<br>"
@@ -2918,8 +2918,8 @@ obj
 								var/Mobs = list()
 								for(var/mob/M in world)
 									menu += "[M.name]"
-									if(M.OrginalName)
-										menu += "[M.OrginalName]"
+									if(M.OriginalName)
+										menu += "[M.OriginalName]"
 									Mobs += M
 								menu += "Cancel"
 								var/Result = input("Who do you wish to Heal?", "Choose", null) in menu
@@ -2931,7 +2931,7 @@ obj
 									for(var/mob/M in Mobs)
 										if(M.name == Result)
 											Found = M
-										if(M.OrginalName == Result)
+										if(M.OriginalName == Result)
 											Found = M
 									if(Found)
 										src.icon_state = "heal off"
@@ -2946,8 +2946,8 @@ obj
 								for(var/mob/M in Players)
 									if(M.Dead && M.client)
 										menu += "[M.name]"
-										if(M.OrginalName)
-											menu += "[M.OrginalName]"
+										if(M.OriginalName)
+											menu += "[M.OriginalName]"
 										Mobs += M
 								menu += "Cancel"
 								var/Result = input("Who do you wish to Revive?", "Choose", null) in menu
@@ -2959,7 +2959,7 @@ obj
 									for(var/mob/M in Mobs)
 										if(M.name == Result)
 											Found = M
-										if(M.OrginalName == Result)
+										if(M.OriginalName == Result)
 											Found = M
 									if(Found)
 										var/Bod = 0
@@ -3242,7 +3242,7 @@ obj
 															usr << "<font color = teal>[M] has [I] [I.suffix]<br>"
 													var/LearnName = prob(100 - M.Intelligence)
 													if(LearnName)
-														usr << "<font color = teal>You learn [M.OrginalName][M]'s name.<br>"
+														usr << "<font color = teal>You learn [M.OriginalName][M]'s name.<br>"
 													var/LearnGender = prob(100 - M.Intelligence)
 													if(LearnGender)
 														usr << "<font color = teal>You learn that [M] is a [M.Gender].<br>"
@@ -3261,8 +3261,8 @@ obj
 						var/Mobs = list()
 						for(var/mob/M in world)
 							menu2 += "[M.name]"
-							if(M.OrginalName)
-								menu2 += "[M.OrginalName]"
+							if(M.OriginalName)
+								menu2 += "[M.OriginalName]"
 							Mobs += M
 						menu2 += "Cancel"
 						var/Result2 = input("Choose someone you want to Observe with your mind.", "Choose", null) in menu2
@@ -3273,7 +3273,7 @@ obj
 							for(var/mob/M in Mobs)
 								if(M.name == Result2)
 									Found = M
-								if(M.OrginalName == Result2)
+								if(M.OriginalName == Result2)
 									Found = M
 							if(Found)
 								if(src in usr.client.screen)
@@ -3287,8 +3287,8 @@ obj
 						for(var/mob/M in world)
 							if(M.client)
 								menu2 += "[M.name]"
-								if(M.OrginalName)
-									menu2 += "[M.OrginalName]"
+								if(M.OriginalName)
+									menu2 += "[M.OriginalName]"
 								Mobs += M
 						menu2 += "Cancel"
 						var/Result2 = input("Choose someone you want to Locate.", "Choose", null) in menu2
@@ -3299,7 +3299,7 @@ obj
 							for(var/mob/M in Mobs)
 								if(M.name == Result2)
 									Found = M
-								if(M.OrginalName == Result2)
+								if(M.OriginalName == Result2)
 									Found = M
 							if(Found)
 								if(src in usr.client.screen)
@@ -3317,8 +3317,8 @@ obj
 						for(var/mob/M in world)
 							if(M.client)
 								menu2 += "[M.name]"
-								if(M.OrginalName)
-									menu2 += "[M.OrginalName]"
+								if(M.OriginalName)
+									menu2 += "[M.OriginalName]"
 								Mobs += M
 						menu2 += "Cancel"
 						var/Result2 = input("Choose someone you want to Telepath.", "Choose", null) in menu2
@@ -3329,7 +3329,7 @@ obj
 							for(var/mob/M in Mobs)
 								if(M.name == Result2)
 									Found = M
-								if(M.OrginalName == Result2)
+								if(M.OriginalName == Result2)
 									Found = M
 							if(Found)
 								if(src in usr.client.screen)
@@ -3448,11 +3448,11 @@ obj
 						usr<<browse(Rules,"window=Rules")
 						return
 					if(Result == "Initiate CountDown")
-						view(8,usr) << "<font color = teal>([usr.OrginalName])[usr] is Waiting 1 Minute.<br>"
+						view(8,usr) << "<font color = teal>([usr.OriginalName])[usr] is Waiting 1 Minute.<br>"
 						usr.Log_player("([usr.key])[usr] Initiated a CountDown.")
 						spawn(600)
 							if(usr)
-								view(8,usr) << "<font color = teal>([usr.OrginalName])[usr] has Waited 1 Minute.<br>"
+								view(8,usr) << "<font color = teal>([usr.OriginalName])[usr] has Waited 1 Minute.<br>"
 								usr.Log_player("([usr.key])[usr] has waited for the CountDown.")
 					if(Result == "Toggle Sparring")
 						if(usr.SparMode == 0)
@@ -3471,11 +3471,11 @@ obj
 						if(!T)
 							return
 						if(T)
-							usr.Log_reports("([usr.key])[usr] - [usr.OrginalName] used Report Player - [T]<p>")
+							usr.Log_reports("([usr.key])[usr] - [usr.OriginalName] used Report Player - [T]<p>")
 							usr << "<font color = teal>Player reported!<br>"
 							for(var/mob/M in Players)
 								if(M.Admin)
-									M << "([usr.key])[usr] - [usr.OrginalName] used Report Player - [T]<p>"
+									M << "([usr.key])[usr] - [usr.OriginalName] used Report Player - [T]<p>"
 							return
 					if(Result == "Report Bug")
 						if(usr.Muted)
@@ -3485,7 +3485,7 @@ obj
 						if(!T)
 							return
 						if(T)
-							usr.Log_reports("([usr.key])[usr] - [usr.OrginalName] used Report Bug - [T]<p>")
+							usr.Log_reports("([usr.key])[usr] - [usr.OriginalName] used Report Bug - [T]<p>")
 							usr << "<font color = teal>Bug reported!<br>"
 							return
 					if(Result == "Admin Help")
@@ -3499,13 +3499,13 @@ obj
 						for(var/mob/M in Players)
 							if(M.Admin)
 								FindsAdmin = 1
-								M << "<b><font color = teal>([usr.key])[usr] - [usr.OrginalName]: [T]<br>"
+								M << "<b><font color = teal>([usr.key])[usr] - [usr.OriginalName]: [T]<br>"
 						if(FindsAdmin)
 							usr << "<font color = teal>Your message has been broadcast to the Admins!<br>"
-							usr.Log_player("([usr.key])[usr] - [usr.OrginalName] used Admin Help - [T]")
+							usr.Log_player("([usr.key])[usr] - [usr.OriginalName] used Admin Help - [T]")
 							return
 						else
-							usr.Log_player("([usr.key])[usr] - [usr.OrginalName] used Admin Help but no Admins were online. - [T]")
+							usr.Log_player("([usr.key])[usr] - [usr.OriginalName] used Admin Help but no Admins were online. - [T]")
 							usr << "<font color = teal>There are currently no Admins online right now!<br>"
 							return
 					if(Result == "Updates")
@@ -3787,10 +3787,10 @@ obj
 					var/T = input("Role Play - In Character")as null|message
 					if(!T)
 						return
-					if(usr.OrginalName == null)
+					if(usr.OriginalName == null)
 						hearers(usr) << "<font color =yellow>[usr] [T]<br>"
 					else
-						hearers(usr) << "<font color=yellow>([usr.OrginalName])[usr] [T]<br>"
+						hearers(usr) << "<font color=yellow>([usr.OriginalName])[usr] [T]<br>"
 					var/Cant = 0
 					if(findtext(T,"(",1,0))
 						Cant = 1
@@ -3883,10 +3883,10 @@ obj
 							if(Change == 0)
 								NewText+="[copytext(T,(length(T)-TextLength)+1,(length(T)-TextLength)+2)]"
 							TextLength--
-						if(usr.OrginalName == null)
+						if(usr.OriginalName == null)
 							M << "<font color=teal>[usr] says in [SL.name]: [Safe_Guard(NewText)]<br>"
 						else
-							M << "<font color=teal>([usr.OrginalName])[usr] says in [SL.name]: [Safe_Guard(NewText)]<br>"
+							M << "<font color=teal>([usr.OriginalName])[usr] says in [SL.name]: [Safe_Guard(NewText)]<br>"
 						var/Cant = 0
 						if(findtext(T,"(",1,0))
 							Cant = 1

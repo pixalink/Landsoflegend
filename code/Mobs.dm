@@ -43,7 +43,7 @@ mob
 		CanTakeDamage = 1 //For magic shields, ect.
 		CanUseTK = 0 //Races that can use TK powers.
 
-		OrginalName = null
+		OriginalName = null
 
 		tmp/OOC = 1
 		tmp/Moving = 1
@@ -593,9 +593,9 @@ mob
 								if(usr.name != "Unknown")
 									M.HateList += usr.name
 				if(src.client && Display)
-					view(usr) << "<font color = yellow> ([usr.OrginalName])[usr] readies for combat while facing in [src]'s direction!<br>"
+					view(usr) << "<font color = yellow> ([usr.OriginalName])[usr] readies for combat while facing in [src]'s direction!<br>"
 				if(src.client)
-					usr.Log_player("([usr.key])[usr] - [usr.OrginalName] Targets [src] to Attack.")
+					usr.Log_player("([usr.key])[usr] - [usr.OriginalName] Targets [src] to Attack.")
 				usr.client.images += src.TargetIcon
 			if(usr.Function == "Pull")
 				if(src.Fainted)
@@ -680,15 +680,15 @@ mob
 			if(src != usr)
 				if(usr in range(1,src))
 					if(src.Age <= 10 && usr.Age <= 10)
-						range(8,usr) << "<font color = yellow>([usr.OrginalName])[usr] Asks [src], a [src.Age] year old [src.Gender], to Mate. But they are both far too young!<br>"
+						range(8,usr) << "<font color = yellow>([usr.OriginalName])[usr] Asks [src], a [src.Age] year old [src.Gender], to Mate. But they are both far too young!<br>"
 						usr << "<font color = teal>[src] and you, must be at least 11 to Mate!<br>"
 						return
 					if(src.Age <= 10)
-						range(8,usr) << "<font color = yellow>([usr.OrginalName])[usr] Asks [src], a [src.Age] year old [src.Gender], to Mate. But [src] is far too young!<br>"
+						range(8,usr) << "<font color = yellow>([usr.OriginalName])[usr] Asks [src], a [src.Age] year old [src.Gender], to Mate. But [src] is far too young!<br>"
 						usr << "<font color = teal>[src] must be at least 11 to Mate!<br>"
 						return
 					if(usr.Age <= 10)
-						range(8,usr) << "<font color = yellow>([usr.OrginalName])[usr] Asks [src], a [src.Age] year old [src.Gender], to Mate. But [src] is far too young!<br>"
+						range(8,usr) << "<font color = yellow>([usr.OriginalName])[usr] Asks [src], a [src.Age] year old [src.Gender], to Mate. But [src] is far too young!<br>"
 						usr << "<font color = teal>[src] must be at least 11 to Mate!<br>"
 						return
 					var/Mate = 0
@@ -700,7 +700,7 @@ mob
 						var/list/menu = new()
 						menu += "Yes"
 						menu += "No"
-						var/Result = input(src,"([usr.OrginalName])[usr] has offered to Mate with you, do you accept?", "Choose", null) in menu
+						var/Result = input(src,"([usr.OriginalName])[usr] has offered to Mate with you, do you accept?", "Choose", null) in menu
 						if(Result == "Yes")
 							range(8,usr) << "<font color = yellow>[src] accepts [usr] in their offer to Mate, and....off they go.<br>"
 							if(usr.Gender == "Female" && usr.Preg == 0)
