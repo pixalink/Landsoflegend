@@ -17,6 +17,7 @@
 #include "code\config.dm"
 #include "code\Crafting.dm"
 #include "code\DoList.dm"
+#include "code\HUD.dm"
 #include "code\Login.dm"
 #include "code\Logs.dm"
 #include "code\MobProcs.dm"
