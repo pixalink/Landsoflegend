@@ -1479,7 +1479,7 @@ obj
 											if(HealWound)
 												M.MortalWound = 0
 										if(M.RightArm)
-											if(M.RightArm <= 100)
+											if(M.RightArm < 100)
 												EXPHeal = 1
 											M.RightArm += Heal
 											if(src.WoundRightArm)
@@ -1490,7 +1490,7 @@ obj
 											if(M.RightArm >= 100)
 												M.RightArm = 100
 										if(M.LeftArm)
-											if(M.LeftArm <= 100)
+											if(M.LeftArm < 100)
 												EXPHeal = 1
 											M.LeftArm += Heal
 											if(src.WoundLeftArm)
@@ -1501,7 +1501,7 @@ obj
 											if(M.LeftArm >= 100)
 												M.LeftArm = 100
 										if(M.RightLeg)
-											if(M.RightLeg <= 100)
+											if(M.RightLeg < 100)
 												EXPHeal = 1
 											M.RightLeg += Heal
 											if(src.WoundRightLeg)
@@ -1512,7 +1512,7 @@ obj
 											if(M.RightLeg >= 100)
 												M.RightLeg = 100
 										if(M.LeftLeg)
-											if(M.LeftLeg <= 100)
+											if(M.LeftLeg < 100)
 												EXPHeal = 1
 											M.LeftLeg += Heal
 											if(src.WoundLeftLeg)
@@ -1523,31 +1523,31 @@ obj
 											if(M.LeftLeg >= 100)
 												M.LeftLeg = 100
 										if(M.Nose)
-											if(M.Nose <= 100)
+											if(M.Nose < 100)
 												EXPHeal = 1
 											M.Nose += Heal
 											if(M.Nose >= 100)
 												M.Nose = 100
 										if(M.LeftEar)
-											if(M.LeftEar <= 100)
+											if(M.LeftEar < 100)
 												EXPHeal = 1
 											M.LeftEar += Heal
 											if(M.LeftEar >= 100)
 												M.LeftEar = 100
 										if(M.RightEar)
-											if(M.RightEar <= 100)
+											if(M.RightEar < 100)
 												EXPHeal = 1
 											M.RightEar += Heal
 											if(M.RightEar >= 100)
 												M.RightEar = 100
 										if(M.Throat)
-											if(M.Throat <= 100)
+											if(M.Throat < 100)
 												EXPHeal = 1
 											M.Throat += Heal / 2
 											if(M.Throat >= 100)
 												M.Throat = 100
 										if(M.Skull)
-											if(M.Skull <= 100)
+											if(M.Skull < 100)
 												EXPHeal = 1
 											M.Skull += Heal / 2
 											if(M.Skull >= 100)
@@ -1562,7 +1562,7 @@ obj
 											if(RemoveWound)
 												src.overlays -= src.WoundHead
 												src.WoundHead = null
-										if(M.Blood <= M.BloodMax)
+										if(M.Blood < M.BloodMax)
 											EXPHeal = 1
 										M.Blood += rand(10,20)
 										M.Blood += Heal / 2
