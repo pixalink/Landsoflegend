@@ -33,10 +33,3 @@ mob
 		usr << "This version is open source using the GNU AGPLv3 license and is available at: https://github.com/pixalink/Landsoflegend<br>A full list of changes can be accessed by pressing G and selecting 'Updates'.<br>"
 		usr << "Macros - S = Say, O = OOC, R = RolePlay<p>"
 		usr << "<font color =teal>It is Year [Year], Month [Month]<p>"
-		if(usr.client.IsByondMember())
-			var/InList = 0
-			if(usr.key in LizardmanList)
-				InList = 1
-			if(InList == 0)
-				LizardmanList += usr.key
-				usr << "<font color = teal><font size = 4><b>Thank you for being a Member and supporting Byond. You can now play as a Lizardman.<br>"

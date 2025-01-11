@@ -51,7 +51,6 @@ var
 	Night = 1
 
 	BanList = list()
-	LizardmanList = list()
 	IllithidList = list()
 
 	Mute = 0

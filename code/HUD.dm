@@ -1841,23 +1841,6 @@ obj
 						usr.Text("RaceInfo",usr,2,6,10,14,"the endruance of others. They have great skills in")
 						usr.Text("RaceInfo",usr,2,5,10,14,"most weapons.They are good at stone work & alchemy.")
 						usr.Text("RaceInfo",usr,2,4,10,14,"Snakemen tend to live for around 100 years.")
-			Lizardman
-				icon_state = "lizardman off"
-				Type = "lizardman"
-				Click()
-					if(usr.Race ==null)
-						src.icon_state = "lizardman on"
-						usr.Race = "Illithid"
-						usr.Text("RaceInfo",usr,7,13,10,14,"--Lizardmen--")
-						usr.Text("RaceInfo",usr,2,12,10,14,"Illithids are not native to this world, coming")
-						usr.Text("RaceInfo",usr,2,11,10,14,"from a strange star long ago.They are super")
-						usr.Text("RaceInfo",usr,2,10,10,14,"Intelligent and rather agile, but lack strength")
-						usr.Text("RaceInfo",usr,2,9,10,14,"and endurance.They gain in every skill at an")
-						usr.Text("RaceInfo",usr,2,8,10,14,"above average rate and start with some Astral")
-						usr.Text("RaceInfo",usr,2,7,10,14,"Magic.They speak Ancient,regrow lost limbs and")
-						usr.Text("RaceInfo",usr,2,6,10,14,"need not breathe.They make excellent magic users")
-						usr.Text("RaceInfo",usr,2,5,10,14,"and learn it with great speed.Illithids live for")
-						usr.Text("RaceInfo",usr,2,4,10,14,"200 years and worship no earthly god.")
 			Illithid
 				icon_state = "illithid off"
 				Type = "illithid"
@@ -2716,7 +2699,6 @@ obj
 											Found = M
 									if(Found)
 										var/list/races = new()
-										races += "Lizardmen"
 										races += "Illithids"
 										races += "Cancel"
 										var/R = input("Choose a Race to give.", "Choose", null) in races
@@ -2728,12 +2710,6 @@ obj
 											usr.Log_admin("([usr.key])[usr] gives [Found] the ability to create Illithids.")
 											usr << "<font color = teal>([Found.key])[Found] was added to the list of keys allowed to create Illithids. This will not save and only be available until a reboot.<br>"
 											Found << "<font color = teal><b>([usr.key])[usr] gave you the ability to create Illithids. This will not save and only be available until a reboot.<br>"
-										if(R == "Lizardmen")
-											LizardmanList += Found.key
-											src.icon_state = "max stats off"
-											usr.Log_admin("([usr.key])[usr] gives [Found] the ability to create Lizardmen.")
-											usr << "<font color = teal>([Found.key])[Found] was added to the list of keys allowed to create Lizardmen. This will not save and only be available until a reboot.<br>"
-											Found << "<font color = teal><b>([usr.key])[usr] gave you the ability to create Lizardmen. This will not save and only be available until a reboot.<br>"
 						if(Rewarded == "Reward Language")
 							var/list/menu = new()
 							var/Mobs = list()
