@@ -1,10 +1,8 @@
 mob
 	Logout()
 		for(var/mob/M in Players)
-			if(M.Admin)
-				M << "<font color = teal>([usr.key])[usr] Logs Out!<br>"
+			M << "<font color = teal>([usr.key])[usr] Logs Out!<br>"
 		usr.RemoveOwnedItems()
-		range(6,usr) << "<font color = teal>([usr.key])[usr] Logs Out!<br>"
 		usr.Save()
 		del(usr)
 	Login()
@@ -16,6 +14,7 @@ mob
 			usr << "You are banned..."
 			del(usr)
 			return
+		Players += usr
 		var/image/I = new('Target.dmi',usr)
 		loadadmins()
 		usr.TargetIcon = I
@@ -26,8 +25,7 @@ mob
 		usr.client.mouse_pointer_icon = 'Cursor.dmi'
 		usr << sound('Intro.mid',1)
 		for(var/mob/M in Players)
-			if(M.Admin)
-				M << "<font color = teal>[usr] Logs In!<br>"
+			M << "<font color = teal>[usr] Logs In!<br>"
 		// var/html_doc="<head><title>Public Notes</title></head><body bgcolor=#000000 text=#FFFF00><center>[PublicNotes]"
 		// usr<<browse(Rules,"window=Rules")
 		// usr<<browse(html_doc,"window=Public Notes")
@@ -42,4 +40,3 @@ mob
 			if(InList == 0)
 				LizardmanList += usr.key
 				usr << "<font color = teal><font size = 4><b>Thank you for being a Member and supporting Byond. You can now play as a Lizardman.<br>"
-		Players += usr
