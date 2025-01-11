@@ -1,5 +1,10 @@
+PlayerSettings
+	var/MusicEnabled = 1
+
 mob
 	var
+		PlayerSettings/Settings = new()
+
 		WHead = null
 		WChest = null
 		WUpperBody = null

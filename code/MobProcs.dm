@@ -342,11 +342,22 @@ mob
 						HW.icon_state = "damage head small"
 					src.overlays += HW
 					src.WoundHead = HW
-		MusicProc()
-			src << sound('Main2.mid')
-			spawn(3150)
+		ToggleMusic()
+			src.Settings.MusicEnabled = !src.Settings.MusicEnabled
+			if(src.Settings.MusicEnabled)
+				src.MusicProc()
+				src << "Music has been enabled.<br>"
+			else
 				src << sound(null)
-				src << sound('Main.mid',1)
+				src << "Music has been disabled.<br>"
+		MusicProc()
+			if(src.Settings.MusicEnabled)
+				src << sound('Main2.mid')
+				spawn(3150)
+					src << sound(null)
+					src << sound('Main.mid',1)
+			else
+				src << sound(null)
 		HairGrowth()
 			var/CanGrowBeard = 0
 			if(src.Gender == "Male" && src.Race != "Alther")

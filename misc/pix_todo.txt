@@ -1,8 +1,6 @@
 ----
 bugs
 ----
-[ ] turning off the music doesn't keep it turned off
-
 [ ] -OOC- Justin93Daniels: Gotcha.  Did y'all also fix the Female Human Sprites?
 -OOC- Justin93Daniels: There's an old typo in No Legs, No Left Arm.  It's worded "NoLegsNoLL", when it should be "NoLegsNoLA" or something like that.
 -OOC- Justin93Daniels: Which means, should a female human have both legs and her left arm removed, she'd turn invisible.
@@ -21,3 +19,10 @@ needs attention
 [ ] expand the view size and make sure the HUD still lines up
 
 [ ] implement new inventory window with scrolling and paper doll equip slots
+
+----
+notes
+----
+HUD / screen objects / mouse stuff
+https://www.byond.com/forum/post/1443657
+https://www.byond.com/forum/post/1379560?page=2#comment16637093

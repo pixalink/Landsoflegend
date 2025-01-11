@@ -63,10 +63,6 @@ client
 				..()
 
 	verb
-		Music()
-			set hidden = 1
-			usr << sound(null)
-			usr << "Music is now off, relog if you want it back on again.<br>"
 		AdminChat()
 			set hidden = 1
 			if(usr.Admin)
