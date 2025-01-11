@@ -1,6 +1,7 @@
 ----
 bugs
 ----
+[ ] snakemen start with ancient language selected. need to check all the defaults
 
 ----
 needs attention
@@ -14,6 +15,8 @@ needs attention
 [ ] expand the view size and make sure the HUD still lines up
 
 [ ] implement new inventory window with scrolling and paper doll equip slots
+
+[ ] replace the chat filter
 
 ----
 notes

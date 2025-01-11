@@ -1311,6 +1311,15 @@ mob
 			src.CanMove = 1
 			src.BloodColour = /obj/Misc/Gore/BloodSplat/
 			src.BloodWallColour = /obj/Misc/Gore/WallBloodSplat/
+
+			var/obj/Items/Currency/GoldCoin/G = new
+			G.Type = 30
+			G.Move(src)
+			G.suffix = "Carried"
+			G.name = "[G.Type] [G.name]"
+			G.icon_state = "gold coin >10"
+			G.overlays+=image(/obj/HUD/C/)
+
 			if(src.Race == "Illithid")
 				src.HungerMulti = 1
 				src.CanUseTK = 1
