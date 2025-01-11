@@ -1250,14 +1250,6 @@ obj
 					C.loc = src.loc
 					view(src) << "<font color = purple>The [src] swirls and crackles with chaotic energy, suddenly the [src] flares violently and expells a strange dark mist of pure energy!<br>"
 					ChaosGate()
-		PressurePlateTrap()
-			for(var/mob/M in range(0,src))
-				view(src) << "<font color = red>You hear a loud grinding noise...<br>"
-				if(src.Ref)
-					var/obj/O = src.Ref
-					if(O.Type == "Spiked Ball")
-						return
-			spawn(5) PressurePlateTrap()
 		GateFunctions(var/J)
 			if(J == "Open")
 				for(var/obj/Items/Furniture/Doors/IronGate/G in range(1,src))
@@ -2136,120 +2128,6 @@ obj
 				icon_state = "dispel"
 			Evil
 				icon_state = "evil"
-		SpellText
-			layer = 101
-			icon = 'books.dmi'
-		Spells
-			icon = 'books.dmi'
-			layer = 101
-			SoulEnslavement
-				icon_state = "soul enslavement"
-				WrittenIn = "DarkTongue"
-				MagicUsed = "Necromancy"
-			InflictVampirism
-				icon_state = "vampirism"
-				WrittenIn = "DarkTongue"
-				MagicUsed = "Necromancy"
-			EverDark
-				icon_state = "everdark"
-				WrittenIn = "DarkTongue"
-				MagicUsed = "Necromancy"
-			CreatePlague
-				icon_state = "plague"
-				WrittenIn = "DarkTongue"
-				MagicUsed = "Necromancy"
-			DeadRising
-				icon_state = "dead rising"
-				WrittenIn = "DarkTongue"
-				MagicUsed = "Necromancy"
-			RaiseDead
-				icon_state = "undead"
-				WrittenIn = "DarkTongue"
-				MagicUsed = "Necromancy"
-			LichCraft
-				icon_state = "lichcraft"
-				WrittenIn = "DarkTongue"
-				MagicUsed = "Necromancy"
-			RaiseSkeleton
-				icon_state = "skeleton"
-				WrittenIn = "DarkTongue"
-				MagicUsed = "Necromancy"
-				SpellEffect = "Raise Skeleton"
-				desc = ".:<u>To Raise a Skeleton</u>:.<p>In order to raise a Skelatal Minion, One set of Bones and One Skull is required. Once you have both of these, a Pentagram is needed. Place the Bones into the middle and speak the words,"
-				New()
-					var/First = list("Ni'","Rak'","Vark'","Na'","Blek'","Vod'","Gra'","Qul'","Thal'","Tra'","Wes'","Dra'","Fru'","Nar'")
-					var/Second = list("tar","thos","palk","ekk","ukk","ektus","tius","urk","dar","pak","tras","rakka","tor","drel")
-					var/Third = list("Ni'","Thar'","Lark'","Ra'","Vlek'","Bod'","Pra'","Aul'","Ahal'","Era'","Tes'","Bra'","Uru'","Qar'")
-					var/Forth = list("mar","phos","valk","ukk","ekk","ektus","vius","urk","par","wak","pras","takka","mor","brel")
-					var/Word = null
-					for(var/T in First)
-						var/Choose = prob(20)
-						if(Choose)
-							Word = "[T]"
-							break
-					for(var/T in Second)
-						var/Choose = prob(20)
-						if(Choose)
-							Word = "[Word][T]"
-							break
-					for(var/T in Third)
-						var/Choose = prob(20)
-						if(Choose)
-							Word = "[Word] [T]"
-							break
-					for(var/T in Forth)
-						var/Choose = prob(20)
-						if(Choose)
-							Word = "[Word][T]"
-							break
-					src.SpellWords = "[Word]"
-					src.desc = "[src.desc][src.SpellWords]"
-				Click()
-					if(usr.Function == "Examine" && usr.CanSee && usr.UsingBook && usr.Fainted == 0 && usr.Stunned == 0 && src in usr.client.screen)
-						usr << "<font color = teal>You begin to Examine the [src] spell...<br>"
-						spawn(100)
-							if(src && usr.CanSee && usr.UsingBook && src in usr.client.screen)
-								var/obj/Know = null
-								for(var/obj/Misc/Languages/L in usr.LangKnow)
-									if(L.name == src.WrittenIn && L.WritePercent >= 0)
-										Know = L
-								if(Know)
-									usr << "<font color = teal>This Spell seems to be written in [src.WrittenIn]. You are able to understand [Know.WritePercent]% Written [src.WrittenIn] currently.<br>"
-								else
-									usr << "<font color = teal>You have no idea what Language it is written in.<br>"
-								var/TextLength = length(src.desc)
-								var/Text = null
-								var/NewText = null
-								while(TextLength >= 1)
-									Text ="[copytext(src.desc,(length(src.desc)-TextLength)+1,(length(src.desc)-TextLength)+2)]"
-									var/Change = 0
-									var/Changes = 0
-									if(Know)
-										Changes += Know.WritePercent + usr.Intelligence / 10
-										if(usr.Intelligence <= usr.IntCap && usr.Intelligence <= WorldIntCap && usr.Intelligence <= usr.IntelligenceMax)
-											usr.Intelligence += usr.IntelligenceMulti / 4
-									Change = prob(100 - Changes)
-									if(Change)
-										usr.CheckText(Text)
-										NewText+="[usr.TextOutput]"
-										usr.TextOutput = null
-									if(Change == 0)
-										NewText+="[copytext(src.desc,(length(src.desc)-TextLength)+1,(length(src.desc)-TextLength)+2)]"
-									TextLength--
-								usr << "<font color = teal>You attempt to read the spell in your head.<p>[NewText]<br>"
-								return
-			AfterLife
-				icon_state = "afterlife"
-				WrittenIn = "DarkTongue"
-			SummonWraith
-				icon_state = "wraith"
-				WrittenIn = "DarkTongue"
-			SummonGhost
-				icon_state = "ghost"
-				WrittenIn = "DarkTongue"
-			CreateCorpseDevourer
-				icon_state = "corpse devourer"
-				WrittenIn = "DarkTongue"
 		OtherWorldly
 			AstralStrand
 				icon = 'terrain.dmi'
@@ -2626,21 +2504,6 @@ obj
 				icon_state = "L Arm"
 				layer = 8
 	Items
-		Traps
-			icon = 'traps.dmi'
-			SpikedBall
-				icon_state = "spiked ball"
-				Type = "Spiked Ball"
-			SandStonePressurePlate
-				name = ""
-				Type = "Pressure Plate"
-				icon_state = "pressure plate2"
-				New()
-					spawn(1)
-						for(var/obj/Items/Traps/T in orange(4,src))
-							if(src.Ref == null)
-								src.Ref = T
-					src.PressurePlateTrap()
 		Weapons
 			layer = 5
 			ObjectTag = "Weapon"
@@ -14523,53 +14386,6 @@ obj
 								return
 		Books_Scrolls
 			icon = 'books.dmi'
-			WantedPoster
-				icon_state = "wanted poster"
-				Fuel = 30
-				Click()
-					if(usr.Function == "Examine")
-						usr << "[src.desc]"
-			Parchment
-				icon_state = "scroll"
-			World_Map
-				icon_state = "scroll"
-				Click()
-					if(usr.Function == "Interact" && src.suffix)
-						usr << browse(file("World.bmp"))
-					if(usr.Function == "PickUp")
-						if(src.suffix == "Carried" && src in usr)
-							src.loc = usr.loc
-							src.suffix = null
-							src.layer = 4
-							src.overlays = null
-							usr.client.screen -= src
-							usr.Weight -= src.Weight
-							view() << "<b>[usr] drops [src]<br>"
-							for(var/obj/HUD/Text/T in usr.client.screen)
-								if(T.Type == "Weight")
-									del(T)
-							if(usr.InvenUp)
-								usr.Text("Weight",usr,4,15,0,10,"Weight - [usr.Weight]/[usr.WeightMax]")
-							usr.Delete("ScrollMiddle","BoxDelete")
-							return
-						if(usr in range(1,src))
-							if(src.suffix == null)
-								if(usr.Weight <= usr.WeightMax)
-									src.loc = usr
-									src.suffix = "Carried"
-									usr.Weight += src.Weight
-									src.overlays+=image(/obj/HUD/C/)
-									if(usr.InvenUp)
-										usr.DeleteInventoryMenu()
-										usr.CreateInventory()
-									view() << "<b>[usr] picks up [src]<br>"
-									return
-								else
-									usr << "<b>You cant carry too much weight!<br>"
-									return
-							else
-								usr << "<b>You cant pick that item up!<br>"
-								return
 			Book_of_Order
 				Fuel = 30
 				icon_state = "order book"
@@ -26207,83 +26023,9 @@ obj
 				ScrollLeft
 					icon = 'books.dmi'
 					icon_state = "Left"
-					Click()
-						if(src.Type == "Book" && usr.UsingBook)
-							var/obj/Book = usr.UsingBook
-							for(var/obj/Misc/Spells/S in usr.client.screen)
-								usr.client.screen -= S
-								Book.FuturePages += S
-							for(var/obj/Misc/SpellText/T in usr.client.screen)
-								usr.client.screen -= T
-							var/Num = 0
-							var/X = 9
-							var/Y = 14
-							for(var/obj/Misc/Spells/S in Book.PreviousPages)
-								if(Num != 4)
-									if(Y != 12)
-										Num += 1
-										S.screen_loc = "[X],[Y]"
-										usr.client.screen += S
-										var/obj/Misc/SpellText/T = new
-										T.icon_state = "[S.icon_state] text"
-										T.screen_loc = "[X - 1],[Y]"
-										usr.client.screen += T
-										Book.PreviousPages -= S
-										Y -= 1
-									else
-										Y = 14
-										X = 11
-										Num += 1
-										S.screen_loc = "[X],[Y]"
-										usr.client.screen += S
-										var/obj/Misc/SpellText/T = new
-										T.icon_state = "[S.icon_state] text"
-										T.screen_loc = "[X - 1],[Y]"
-										usr.client.screen += T
-										Book.PreviousPages -= S
-										Y -= 1
-								else
-									return
 				ScrollRight
 					icon = 'books.dmi'
 					icon_state = "Right"
-					Click()
-						if(src.Type == "Book" && usr.UsingBook)
-							var/obj/Book = usr.UsingBook
-							for(var/obj/Misc/Spells/S in usr.client.screen)
-								usr.client.screen -= S
-								Book.PreviousPages += S
-							for(var/obj/Misc/SpellText/T in usr.client.screen)
-								usr.client.screen -= T
-							var/Num = 0
-							var/X = 9
-							var/Y = 14
-							for(var/obj/Misc/Spells/S in Book.FuturePages)
-								if(Num != 4)
-									if(Y != 12)
-										Num += 1
-										S.screen_loc = "[X],[Y]"
-										usr.client.screen += S
-										var/obj/Misc/SpellText/T = new
-										T.icon_state = "[S.icon_state] text"
-										T.screen_loc = "[X - 1],[Y]"
-										usr.client.screen += T
-										Book.FuturePages -= S
-										Y -= 1
-									else
-										Y = 14
-										X = 11
-										Num += 1
-										S.screen_loc = "[X],[Y]"
-										usr.client.screen += S
-										var/obj/Misc/SpellText/T = new
-										T.icon_state = "[S.icon_state] text"
-										T.screen_loc = "[X - 1],[Y]"
-										usr.client.screen += T
-										Book.FuturePages -= S
-										Y -= 1
-								else
-									return
 				Scroll
 					icon = 'books.dmi'
 					icon_state = "Scroll"

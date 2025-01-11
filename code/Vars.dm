@@ -55,7 +55,6 @@ mob
 		tmp/Job = null
 		tmp/GuardLoc = null
 		tmp/Ready = 0
-		tmp/UsingBook = null
 		tmp/CantDoTask = 0
 		tmp/Selling = null // List of objects a NPC is selling and that belong to them.
 
