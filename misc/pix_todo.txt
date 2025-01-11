@@ -3,7 +3,13 @@ bugs
 ----
 [ ] turning off the music doesn't keep it turned off
 
+[ ] -OOC- Justin93Daniels: Gotcha.  Did y'all also fix the Female Human Sprites?
+-OOC- Justin93Daniels: There's an old typo in No Legs, No Left Arm.  It's worded "NoLegsNoLL", when it should be "NoLegsNoLA" or something like that.
+-OOC- Justin93Daniels: Which means, should a female human have both legs and her left arm removed, she'd turn invisible.
+
 ----
 needs attention
 ----
 [ ] the map saving/loading needs rewritten. it should not use a separate file for every tile
+
+[ ] need to auto delete garbage items left laying around
