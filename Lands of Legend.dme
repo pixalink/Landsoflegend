@@ -13,6 +13,7 @@
 
 // BEGIN_INCLUDE
 #include "code\AntiSpam.dm"
+#include "code\Atoms.dm"
 #include "code\Combat.dm"
 #include "code\config.dm"
 #include "code\Crafting.dm"
@@ -25,7 +26,6 @@
 #include "code\Objs.dm"
 #include "code\Turfs.dm"
 #include "code\txtprocs.dm"
-#include "code\Vars.dm"
 #include "code\World.dm"
 #include "code\Macros.dms"
 #include "code\Items\Altars.dm"
