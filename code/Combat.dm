@@ -1489,7 +1489,10 @@ mob
 					else
 						src.Endurance += src.EnduranceMulti
 					if(src.BloodMax)
+						var/BleedingPercentage = src.Blood / src.BloodMax
 						src.BloodMax += rand(0.5,1)
+						src.Blood = BloodMax * BleedingPercentage
+
 			if(AddInt == "Yes")
 				if(GainsInt)
 					if(src.Intelligence <= src.IntCap && src.Intelligence <= WorldIntCap && src.Intelligence <= src.IntelligenceMax)
