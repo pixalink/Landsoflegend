@@ -60,8 +60,6 @@ var
 
 	Season = null
 
-	Ruining = 0
-
 	Players = list()
 
 	WorldStrCap = 22

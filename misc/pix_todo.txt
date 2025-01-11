@@ -1,9 +1,6 @@
 ----
 bugs
 ----
-[ ] the Death() proc isn't actually resetting the combat target when a mob dies.
-this is leading to not being able to attack after using the remake choice,
-and who knows what other sorts of unseen problems
 
 ----
 needs attention
@@ -11,8 +8,6 @@ needs attention
 [ ] the map saving/loading needs rewritten. it should not use a separate file for every tile
 
 [ ] need to auto delete garbage items left laying around
-
-[ ] players should spawn with gold so they can buy items from shops
 
 [ ] expand the view size and make sure the HUD still lines up
 
