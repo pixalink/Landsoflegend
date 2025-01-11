@@ -1,6 +1,23 @@
-obj
-	HUD
+mob
+	var
+		MouseLocationX = null
+		MouseLocationY = null
+		tmp/InvenUp = 0
 
+obj
+	MouseEntered()
+		if(src in usr)
+			if(src.suffix)
+				if(usr.InvenUp)
+					usr.MouseLocationX = src.Xloc
+					usr.MouseLocationY = src.Yloc
+					usr.Box()
+	MouseExited()
+		usr.MouseLocationX = null
+		usr.MouseLocationY = null
+		usr.Delete("ScrollMiddle","BoxDelete")
+
+	HUD
 		E
 			icon = 'HUD.dmi'
 			icon_state = "equipped marker"

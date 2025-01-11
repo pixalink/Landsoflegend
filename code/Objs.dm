@@ -58,17 +58,6 @@ atom
 							else
 								O.loc = O.LastLoc
 obj
-	MouseEntered()
-		if(src in usr)
-			if(src.suffix)
-				if(usr.InvenUp)
-					usr.MouseLocationX = src.Xloc
-					usr.MouseLocationY = src.Yloc
-					usr.Box()
-	MouseExited()
-		usr.MouseLocationX = null
-		usr.MouseLocationY = null
-		usr.Delete("ScrollMiddle","BoxDelete")
 	proc
 		DemonicSwordMagic()
 			var/mob/L = null

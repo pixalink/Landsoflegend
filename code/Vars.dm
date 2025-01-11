@@ -40,10 +40,6 @@ mob
 
 		OrginalName = null
 
-		MouseLocationX = null
-		MouseLocationY = null
-
-		tmp/InvenUp = 0
 		tmp/OOC = 1
 		tmp/Moving = 1
 		tmp/CanFireRanged = 1
