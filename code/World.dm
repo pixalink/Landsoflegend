@@ -10,8 +10,7 @@ world
 	fps = 10
 	New()
 		log = file("ErrorLog.txt")
-
-		// @TODO: clean up map loading to reduce start up time
+		
 		LoadMisc()
 		LoadMap()
 		WorldTileModifications()
@@ -32,6 +31,10 @@ proc/WorldTileModifications()
 			for(var/obj/Items/Plants/P in T)
 				if(P.icon_state != "big stump" && P.icon_state != "small stump")
 					del(P)
+		for(var/obj/Items/Misc/StoneForge/S in T)
+			if(S.icon_state == "forge lit")
+				S.icon_state = "forge"
+				S.Type = "Not Lit"
 
 proc/WorldTick()
 	while(1)
@@ -696,16 +699,23 @@ client
 			var/savefile/S = new(story_sav)
 			S["Story"] >> Story
 	LoadMap()
-		for(var/turf/T in world)
-			var/map_sav = "map/[T.x],[T.y],[T.z].sav"
-			if(length(file(map_sav)))
-				var/savefile/F = new(map_sav)
-				F >> T
-				Tiles += T
-			for(var/obj/Items/Misc/StoneForge/S in T)
-				if(S.icon_state == "forge lit")
-					S.icon_state = "forge"
-					S.Type = "Not Lit"
+		// @TODO: this is actually really bad. rewrite the map saving/loading instead
+		if(fexists("map/ids.sav"))
+			var/TurfIds = list()
+			var/savefile/ids_sav = new("map/ids.sav")
+			ids_sav >> TurfIds
+
+			for(var/map_sav in TurfIds)
+				if(length(file(map_sav)))
+					var/savefile/F = new(map_sav)
+
+					var/loc_str = replacetext(map_sav, "map/", "")
+					loc_str = replacetext(loc_str, ".sav", "")
+					var/list/loc = splittext(loc_str, ",")
+
+					var/turf/T = locate(loc[1], loc[2], loc[3])
+					F >> T
+					Tiles += T
 		world << "<font color = teal><b>Map Loaded!<br>"
 	SaveMap(var/Time)
 		if(Time == null)
@@ -715,6 +725,7 @@ client
 			var/Mobs = list()
 			var/Objects = list()
 			var/Turfs = list()
+			var/TurfIds = list()
 			for(var/turf/T in Tiles)
 				var/In = 0
 				if(T in Turfs)
@@ -722,31 +733,35 @@ client
 				if(In == 0)
 					Turfs += T
 			for(var/turf/T in Turfs)
-				spawn(1)
-					for(var/mob/M in locate(T.x,T.y,T.z))
-						M.LastLoc = M.loc
-						M.loc = locate(0,0,0)
-						Mobs += M
-					for(var/obj/O in locate(T.x,T.y,T.z))
-						for(var/V in O.vars)
-							var/variable = V
-							var/typeof=O.vars[variable]
-							if(istype(typeof,/atom/))
-								if(O.LastLoc == null && typeof != T)
-									O.LastLoc = O.loc
-									O.loc = locate(0,0,0)
-									Objects += O
-						if(O.name == "Rock")
-							del(O)
-					T.overlays -= /obj/Misc/Weather/Snow/
-					T.overlays -= /obj/Misc/Weather/Rain/
-					var/tile_sav = "map/[T.x],[T.y],[T.z].sav"
-					var/savefile/F = new(tile_sav)
-					F << T
-					for(var/mob/M in Mobs)
-						M.loc = M.LastLoc
-					for(var/obj/O in Objects)
-						O.loc = O.LastLoc
+				// spawn(1)
+				for(var/mob/M in locate(T.x,T.y,T.z))
+					M.LastLoc = M.loc
+					M.loc = locate(0,0,0)
+					Mobs += M
+				for(var/obj/O in locate(T.x,T.y,T.z))
+					for(var/V in O.vars)
+						var/variable = V
+						var/typeof=O.vars[variable]
+						if(istype(typeof,/atom/))
+							if(O.LastLoc == null && typeof != T)
+								O.LastLoc = O.loc
+								O.loc = locate(0,0,0)
+								Objects += O
+					if(O.name == "Rock")
+						del(O)
+				T.overlays -= /obj/Misc/Weather/Snow/
+				T.overlays -= /obj/Misc/Weather/Rain/
+				var/tile_sav = "map/[T.x],[T.y],[T.z].sav"
+				var/savefile/F = new(tile_sav)
+				F << T
+				TurfIds += tile_sav
+				for(var/mob/M in Mobs)
+					M.loc = M.LastLoc
+				for(var/obj/O in Objects)
+					O.loc = O.LastLoc
+
+			var/savefile/F = new("map/ids.sav")
+			F << TurfIds
 			world << "<font color = teal><b>Map Saving...<br>"
 	SaveMisc()
 		var/ban_sav = "players/bans.sav"
