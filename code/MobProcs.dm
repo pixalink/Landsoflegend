@@ -4956,7 +4956,6 @@ mob
 				var/obj/Misc/Languages/Common/C = new
 				C.SpeakPercent = 97
 				C.WritePercent = 97
-				src.CurrentLanguage = C
 				src.LangKnow += C
 			if(src.Race == "Alther")
 				var/obj/Misc/Languages/Altherian/L = new
@@ -4983,13 +4982,11 @@ mob
 				var/obj/Misc/Languages/Common/C = new
 				C.SpeakPercent = 97
 				C.WritePercent = 97
-				src.CurrentLanguage = C
 				src.LangKnow += C
 
 				var/obj/Misc/Languages/Ancient/A = new
 				A.SpeakPercent = 50
 				A.WritePercent = 33
-				src.CurrentLanguage = A
 				src.LangKnow += A
 			if(src.Race == "Stahlite")
 				var/obj/Misc/Languages/Stahliteian/L = new
@@ -5016,13 +5013,11 @@ mob
 				var/obj/Misc/Languages/Common/C = new
 				C.SpeakPercent = 97
 				C.WritePercent = 97
-				src.CurrentLanguage = C
 				src.LangKnow += C
 
 				var/obj/Misc/Languages/Ancient/A = new
 				A.SpeakPercent = 50
 				A.WritePercent = 33
-				src.CurrentLanguage = A
 				src.LangKnow += A
 			if(src.Race == "Snakeman")
 				var/obj/Misc/Languages/Slithus/L = new
@@ -5049,13 +5044,11 @@ mob
 				var/obj/Misc/Languages/Common/C = new
 				C.SpeakPercent = 97
 				C.WritePercent = 97
-				src.CurrentLanguage = C
 				src.LangKnow += C
 
 				var/obj/Misc/Languages/Ancient/A = new
 				A.SpeakPercent = 40
 				A.WritePercent = 20
-				src.CurrentLanguage = A
 				src.LangKnow += A
 			if(src.Race == "Ratling")
 				var/obj/Misc/Languages/Scutter/L = new
@@ -5067,24 +5060,22 @@ mob
 				var/obj/Misc/Languages/Slithus/L = new
 				L.SpeakPercent = 50
 				L.WritePercent = 50
-				src.CurrentLanguage = L
 				src.LangKnow += L
 
 				var/obj/Misc/Languages/Ribbitus/L2 = new
 				L2.SpeakPercent = 97
 				L2.WritePercent = 50
-				src.CurrentLanguage = L2
 				src.LangKnow += L2
 
 				var/obj/Misc/Languages/Ancient/L3 = new
 				L3.SpeakPercent = 100
 				L3.WritePercent = 100
+				src.CurrentLanguage = L3
 				src.LangKnow += L3
 
 				var/obj/Misc/Languages/Common/C = new
 				C.SpeakPercent = 75
 				C.WritePercent = 50
-				src.CurrentLanguage = C
 				src.LangKnow += C
 			if(src.Race == "Frogman")
 				var/obj/Misc/Languages/Ribbitus/L = new
@@ -5101,7 +5092,6 @@ mob
 				var/obj/Misc/Languages/Common/C = new
 				C.SpeakPercent = 97
 				C.WritePercent = 97
-				src.CurrentLanguage = C
 				src.LangKnow += C
 			if(src.Race == "Wolfman")
 				var/obj/Misc/Languages/Wolfen/L = new

@@ -1,7 +1,6 @@
 ----
 bugs
 ----
-[ ] snakemen start with ancient language selected. need to check all the defaults
 
 ----
 needs attention
