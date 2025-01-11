@@ -602,8 +602,6 @@ obj
 		SpeakPercent = 0 //How well you can speak that Language
 		WritePercent = 0 //How well you can write that Language
 
-		Standing = 0 //The standing that a players Contact object has, in ref to an NPC.
-
 		WeaponDamageMax = 0
 		WeaponDamageMin = 0
 

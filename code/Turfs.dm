@@ -156,13 +156,6 @@ turf
 		ManMade = 0 // Makes it so the AddObjects proc wont place boulders onto this turf
 
 		AttachedKey = null
-		
-	proc
-		Regrow()
-			spawn(rand(300,600))
-				if(src.name == "Dead Grass")
-					src.name = "Grass"
-					src.icon_state = "grass"
 
 	luminosity = 1
 	icon = 'terrain.dmi'

@@ -541,43 +541,6 @@ obj
 					icon_state = "BL"
 				BR
 					icon_state = "BR"
-			Book
-				icon = 'books.dmi'
-				layer = 101
-				FrameTLL
-					icon_state = "frame TLL"
-				FrameTML
-					icon_state = "frame TML"
-				FrameTRL
-					icon_state = "frame TRL"
-				FrameTLR
-					icon_state = "frame TLR"
-				FrameTLR
-					icon_state = "frame TLR"
-				FrameTMR
-					icon_state = "frame TMR"
-				FrameTRR
-					icon_state = "frame TRR"
-				FrameTTR
-					icon_state = "frame TTR"
-				FrameBBR
-					icon_state = "frame BBR"
-				FrameBRR
-					icon_state = "frame BRR"
-				FrameBMR
-					icon_state = "frame BMR"
-				FrameBLR
-					icon_state = "frame BLR"
-				FrameBRL
-					icon_state = "frame BRL"
-				FrameBML
-					icon_state = "frame BML"
-				FrameBLL
-					icon_state = "frame BLL"
-				FrameBBL
-					icon_state = "frame BBL"
-				FrameTTL
-					icon_state = "frame TTL"
 			Scroll
 				layer = 100
 				name = ""
