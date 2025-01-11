@@ -1,8 +1,6 @@
 #define DEBUG
-#define REMOTE_SERVER
 world
 	view = 7
-	version = 63
 	name = "Lands of Legend - Version 0.63"
 	status = "Lands of Legend - Version 0.63"
 	hub = "Godsring.LandsofLegend"
@@ -10,12 +8,12 @@ world
 	fps = 10
 	New()
 		log = file("ErrorLog.txt")
-		
+
 		LoadMisc()
 		LoadMap()
 		WorldTileModifications()
 		CreateOre()
-		DayNightCyle()
+		DayNightCycle()
 		WorldTick()
 
 proc/WorldTileModifications()
@@ -43,8 +41,6 @@ proc/WorldTick()
 		SaveMisc()
 
 /var
-	WantedHumans = list()
-
 	Tiles = list()
 	Admins = list()
 
@@ -61,8 +57,6 @@ proc/WorldTick()
 	IllithidList = list()
 
 	Mute = 0
-
-	ChaosIntensity = 10
 
 	Weather = null
 
@@ -928,7 +922,7 @@ client
 			Season = "Winter"
 			world << "<font color = blue><font size = 4><b>It is now Winter<br>"
 			Populate()
-	DayNightCyle()
+	DayNightCycle()
 		var/Delay
 		if(Night == 0)
 			Night = 1
@@ -938,7 +932,7 @@ client
 				if(T.OnFire == 0)
 					T.luminosity = 0
 			spawn(Delay)
-				DayNightCyle()
+				DayNightCycle()
 			return
 		if(Night)
 			Night = 0
@@ -949,7 +943,7 @@ client
 					if(T.OnFire == 0)
 						T.luminosity = 1
 			spawn(Delay)
-				DayNightCyle()
+				DayNightCycle()
 			return
 	Time()
 		Month += 1
