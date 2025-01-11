@@ -565,47 +565,7 @@ atom
 		tmp/UnderTK = null //1 if the person is being controlled by TK.
 
 		BloodColour = null
-obj
-	var
-		EquipState = null
-		CarryState = null
-		ItemLayer = 0
 
-		ObjectType = null
-		ObjectTag = null
-
-		OpenState = null
-		ClosedState = null
-
-		Locked = 0
-		KeyCode = null
-
-		CantRaces = null
-		Heals = null
-
-		tmp/GoesTo = null
-
-		Value = 0
-
-		CraftPotential = 0
-
-		Skinned = 0
-		Butchered = 0
-
-		CookedState = null //Icon state of the meat when cooked
-		CookingFood = 0 // 1 means it needs to be cook, and 2 means it is cooked.
-
-		Delete = 0 //Add this to items that should delete when the person holding them dies.
-
-		TwoHander = 0 //Weapons that can used two hands to do damage with.
-
-		SpeakPercent = 0 //How well you can speak that Language
-		WritePercent = 0 //How well you can write that Language
-
-		WeaponDamageMax = 0
-		WeaponDamageMin = 0
-
-atom
 	proc
 		make_image(icon/icon,icon_state,layer)
 			var/image/I=new
