@@ -1,8 +1,8 @@
 #define DEBUG
 world
 	view = 7
-	name = "Lands of Legend - Pix Version 0.01"
-	status = "Lands of Legend - Pix Version 0.01"
+	name = "Lands of Legend - Pix Version 0.02"
+	status = "Lands of Legend - Pix Version 0.02"
 	hub = "Godsring.LandsofLegend"
 	hub_password = ""
 	fps = 10
