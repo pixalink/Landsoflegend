@@ -23,7 +23,6 @@
 #include "code\MobProcs.dm"
 #include "code\Mobs.dm"
 #include "code\Objs.dm"
-#include "code\Text On Screen.dm"
 #include "code\Turfs.dm"
 #include "code\txtprocs.dm"
 #include "code\Vars.dm"
