@@ -137,7 +137,6 @@ mob
 				B.Owner = src
 				if(src.client)
 					B.Owner = src.name
-					B.BodysKey = src.key
 				B.Move(src.loc)
 				var/icon/I = new(B.icon)
 				I.Turn(90)
@@ -3399,24 +3398,6 @@ mob
 			if(src.Target == null)
 				step_rand(src)
 			spawn(9) ChaosAI()
-		PlaceWantedPoster(var/mob/Wanted)
-			if(src.Race == "Human")
-				var/Town = 1
-				if(Town == 1)
-					for(var/turf/T in block(locate(2,67,1),locate(55,111,1)))
-						if(T.icon_state == "bulky brick wall")
-							for(var/turf/Floors/F in range(1,T))
-								var/CanPlace = 1
-								if(F.y == T.y - 1 && F.density == 0)
-									for(var/obj/O in T.loc)
-										CanPlace = 0
-									if(CanPlace)
-										var/Place = prob(1)
-										if(Place)
-											var/obj/Items/Books_Scrolls/WantedPoster/P = new
-											P.Move(locate(F.x,F.y,F.z))
-											world << "Poster at [P.x],[P.y]"
-											return
 		CallForHelp(var/mob/T)
 			if(src.Faction == "Undead")
 				return
@@ -5348,19 +5329,6 @@ mob
 				src.DeleteInventoryMenu()
 				return
 			spawn(10) CheckContainer(Con)
-		CheckBook(var/obj/Bk)
-			var/NearBook = 0
-			if(Bk.loc == src)
-				NearBook = 1
-			if(NearBook == 0)
-				src.UsingBook = null
-				src.Delete("Book")
-				for(var/obj/Misc/Spells/S in src.client.screen)
-					src.client.screen -= S
-				for(var/obj/Misc/SpellText/T in src.client.screen)
-					src.client.screen -= T
-				return
-			spawn(10) CheckBook(Bk)
 		CreateContainerMenu(var/obj/Con)
 			var/obj/H = new/obj/HUD/Menus/Inventory/Middle(src.client)
 			var/obj/Slot = new/obj/HUD/Menus/Inventory/Slot(src.client)
@@ -5456,121 +5424,6 @@ mob
 				if(T.Type == N2)
 					del(T)
 			return
-		Book()
-			var/obj/M = new/obj/HUD/Menus/Scroll/ScrollMiddle(src.client)
-			var/obj/L = new/obj/HUD/Menus/Scroll/ScrollLeft(src.client)
-			var/obj/R = new/obj/HUD/Menus/Scroll/ScrollRight(src.client)
-			var/obj/LM = new/obj/HUD/Menus/Scroll/ScrollLeft(src.client)
-			var/obj/RM = new/obj/HUD/Menus/Scroll/ScrollRight(src.client)
-			var/obj/TLL = new/obj/HUD/Menus/Book/FrameTLL(src.client)
-			var/obj/TML = new/obj/HUD/Menus/Book/FrameTML(src.client)
-			var/obj/TRL = new/obj/HUD/Menus/Book/FrameTRL(src.client)
-			var/obj/TLR = new/obj/HUD/Menus/Book/FrameTLR(src.client)
-			var/obj/TMR = new/obj/HUD/Menus/Book/FrameTMR(src.client)
-			var/obj/TRR = new/obj/HUD/Menus/Book/FrameTRR(src.client)
-			var/obj/TTR = new/obj/HUD/Menus/Book/FrameTTR(src.client)
-			var/obj/BBR = new/obj/HUD/Menus/Book/FrameBBR(src.client)
-			var/obj/BRR = new/obj/HUD/Menus/Book/FrameBRR(src.client)
-			var/obj/BMR = new/obj/HUD/Menus/Book/FrameBMR(src.client)
-			var/obj/BLR = new/obj/HUD/Menus/Book/FrameBLR(src.client)
-			var/obj/BRL = new/obj/HUD/Menus/Book/FrameBRL(src.client)
-			var/obj/BML = new/obj/HUD/Menus/Book/FrameBML(src.client)
-			var/obj/BLL = new/obj/HUD/Menus/Book/FrameBLL(src.client)
-			var/obj/BBL = new/obj/HUD/Menus/Book/FrameBBL(src.client)
-			var/obj/TTL = new/obj/HUD/Menus/Book/FrameTTL(src.client)
-			M.screen_loc = "8,13 to 11,14"
-			L.screen_loc = "8,13 to 8,14"
-			R.screen_loc = "11,13 to 11,14"
-			RM.screen_loc = "9,13 to 9,14"
-			LM.screen_loc = "10,13 to 10,14"
-			TLL.screen_loc = "7,15"
-			TML.screen_loc = "8,15"
-			TRL.screen_loc = "9,15"
-			TLR.screen_loc = "10,15"
-			TMR.screen_loc = "11,15"
-			TRR.screen_loc = "12,15"
-			TTR.screen_loc = "12,14"
-			BBR.screen_loc = "12,13"
-			BRR.screen_loc = "12,12"
-			BMR.screen_loc = "11,12"
-			BLR.screen_loc = "10,12"
-			BRL.screen_loc = "9,12"
-			BML.screen_loc = "8,12"
-			BLL.screen_loc = "7,12"
-			BBL.screen_loc = "7,13"
-			TTL.screen_loc = "7,14"
-			src.client.screen += M
-			src.client.screen += L
-			src.client.screen += R
-			src.client.screen += LM
-			src.client.screen += RM
-			src.client.screen += TLL
-			src.client.screen += TML
-			src.client.screen += TRL
-			src.client.screen += TLR
-			src.client.screen += TMR
-			src.client.screen += TRR
-			src.client.screen += TTR
-			src.client.screen += BBR
-			src.client.screen += BRR
-			src.client.screen += BMR
-			src.client.screen += BLR
-			src.client.screen += BRL
-			src.client.screen += BML
-			src.client.screen += BLL
-			src.client.screen += BBL
-			src.client.screen += TTL
-			M.Type = "Book"
-			L.Type = "Book"
-			R.Type = "Book"
-			RM.Type = "Book"
-			LM.Type = "Book"
-			TLL.Type = "Book"
-			TML.Type = "Book"
-			TRL.Type = "Book"
-			TLR.Type = "Book"
-			TMR.Type = "Book"
-			TRR.Type = "Book"
-			TTR.Type = "Book"
-			BBR.Type = "Book"
-			BRR.Type = "Book"
-			BMR.Type = "Book"
-			BLR.Type = "Book"
-			BRL.Type = "Book"
-			BML.Type = "Book"
-			BLL.Type = "Book"
-			BBL.Type = "Book"
-			TTL.Type = "Book"
-			if(src.UsingBook)
-				src.CheckBook(src.UsingBook)
-				var/obj/Book = src.UsingBook
-				var/Num = 0
-				var/X = 9
-				var/Y = 14
-				for(var/obj/Misc/Spells/S in Book.BookContents)
-					if(Num != 4)
-						if(Y != 12)
-							Num += 1
-							S.screen_loc = "[X],[Y]"
-							src.client.screen += S
-							var/obj/Misc/SpellText/T = new
-							T.icon_state = "[S.icon_state] text"
-							T.screen_loc = "[X - 1],[Y]"
-							src.client.screen += T
-							Y -= 1
-						else
-							Y = 14
-							X = 11
-							Num += 1
-							S.screen_loc = "[X],[Y]"
-							src.client.screen += S
-							var/obj/Misc/SpellText/T = new
-							T.icon_state = "[S.icon_state] text"
-							T.screen_loc = "[X - 1],[Y]"
-							src.client.screen += T
-							Y -= 1
-					else
-						Book.FuturePages += S
 		Box()
 			var/obj/H = new/obj/HUD/Menus/Box(src.client)
 			var/NameX = src.MouseLocationX + 1
@@ -5666,117 +5519,6 @@ mob
 								O.Yloc = y
 								x++
 			return
-		AITalk(var/T,var/mob/Speaker)
-			var/Facing = 0
-			if(Speaker.loc == locate(src.x,src.y-1,src.z) && src.dir == SOUTH)
-				Facing = 1
-			if(Speaker.loc == locate(src.x,src.y+1,src.z) && src.dir == NORTH)
-				Facing = 1
-			if(Speaker.loc == locate(src.x+1,src.y,src.z) && src.dir == EAST)
-				Facing = 1
-			if(Speaker.loc == locate(src.x-1,src.y,src.z) && src.dir == WEST)
-				Facing = 1
-			if(Facing && T)
-				var/Knows = null
-				for(var/obj/Misc/Contact/C in src.KnowList)
-					if(C.name == Speaker.name)
-						Knows = C
-				var/Type = null
-				var/L = lowertext(T)
-				var/Message = null
-				if(findtext(L,"i am [Speaker.name]",1,0))
-					Type = "Intro"
-				if(findtext(L,"my names [Speaker.name]",1,0))
-					Type = "Intro"
-				if(findtext(L,"[Speaker.name] is my name",1,0))
-					Type = "Intro"
-				if(findtext(L,"i'm [Speaker.name]",1,0))
-					Type = "Intro"
-				if(findtext(L,"i am called [Speaker.name]",1,0))
-					Type = "Intro"
-				if(findtext(L,"names [Speaker.name]",1,0))
-					Type = "Intro"
-				if(findtext(L,"hello",1,0))
-					Type = "Greeting"
-				if(findtext(L,"hi",1,0))
-					Type = "Greeting"
-				if(findtext(L,"hey",1,0))
-					Type = "Greeting"
-				if(findtext(L,"who are you",1,0))
-					Type = "Question - Identity"
-				if(findtext(L,"whats your name",1,0))
-					Type = "Question - Identity"
-				if(findtext(L,"who are you",1,0))
-					Type = "Question - Identity"
-				if(findtext(L,"your history",1,0))
-					Type = "Question - History"
-				if(findtext(L,"about yourself",1,0))
-					Type = "Question - History"
-				if(findtext(L,"of yourself",1,0))
-					Type = "Question - History"
-				if(findtext(L,"know about you",1,0))
-					Type = "Question - History"
-				if(findtext(L,"know your history",1,0))
-					Type = "Question - History"
-				if(findtext(L,"me about you",1,0))
-					Type = "Question - History"
-				if(Type == "Intro")
-					var/AskedForName = 0
-					if(src.FollowUp == "Asking Name - Hello")
-						AskedForName = 1
-					if(src.FollowUp == "Asking Name - History")
-						AskedForName = 1
-					if(AskedForName)
-						Message = "<font color = teal>[src] says: Its nice to meet you [Speaker]!<br>"
-						var/obj/Misc/Contact/C = new
-						C.name = Speaker.name
-						C.Standing += 1
-						src.KnowList += C
-						if(src.FollowUp == "Asking Name")
-							src.FollowUp = null
-					if(Knows && Message == null)
-						Message = "<font color = teal>[src] says: I know your name already [Speaker]<br>"
-						src.SpeakingWith = Speaker
-					if(Knows == null && Message == null)
-						Message = "<font color = teal>[src] says: [Speaker.name]? Very well. I am [src]<br>"
-						src.SpeakingWith = Speaker
-						var/obj/Misc/Contact/C = new
-						C.name = Speaker.name
-						C.Standing += 1
-						src.KnowList += C
-						if(src.FollowUp == "Asking Name")
-							src.FollowUp = null
-				if(Type == "Question - History")
-					if(src.FollowUp == "Asking Name")
-						Message = "<font color = teal>[src] says: Yes yes, You have already asked about my history, now what is your name?<br>"
-					if(Speaker.name in src.KnowList)
-						Knows = Speaker.name
-					if(Knows && Message == null)
-						Message = "<font color = teal>[src] says: Well, I'm part of the [src.Faction].<br>"
-						src.SpeakingWith = Speaker
-					if(Knows == null && Message == null)
-						Message = "<font color = teal>[src] says:First tell me your name, then maybe we can discuss such things.<br>"
-						src.SpeakingWith = Speaker
-						src.FollowUp = "Asking Name"
-				if(Type == "Question - Identity")
-					if(Knows && Message == null)
-						Message = "<font color = teal>[src] says: Why do you ask my name [Speaker] when I,ve already told you it!<br>"
-						src.SpeakingWith = Speaker
-					if(Knows == null && Message == null)
-						Message = "<font color = teal>[src] says:Whats your name first?<br>"
-						src.SpeakingWith = Speaker
-						src.FollowUp = "Asking Name"
-				if(Type == "Greeting")
-					if(src.FollowUp == "Asking Name")
-						Message = "<font color = teal>[src] says: I asked for your name.<br>"
-					if(Knows && Message == null)
-						Message = "<font color = teal>[src] says: Hello [Knows]...<br>"
-						src.SpeakingWith = Speaker
-					if(Knows == null && Message == null)
-						Message = "<font color = teal>[src] says: Hello...<br>"
-						src.SpeakingWith = Speaker
-				if(Message)
-					view() << "[Message]"
 		LearnRaceLanguages(var/Lang)
 			src << "<font color = purple>You hear the basics of [Lang] and begin to understand it!<br>"
 			if(Lang == "Common")

@@ -14722,69 +14722,6 @@ obj
 							else
 								usr << "<b>You cant pick that item up!<br>"
 								return
-			Book
-				Fuel = 30
-				icon_state = "plain book"
-				desc = "A Plain and Empty Book."
-				Click()
-					if(usr.Function == "Interact" && usr.Fainted == 0 && usr.Stunned == 0 && src in usr)
-						var/HasArms = 1
-						if(usr.LeftArm <= 20 && usr.RightArm <= 20)
-							HasArms = 0
-						if(HasArms == 0)
-							usr << "<font color = red>Your arms are either far too damaged, or missing!<br>"
-							return
-						if(usr.UsingBook == null)
-							usr.UsingBook = src
-							usr.Book()
-							view() << "<font color = yellow>[usr] opens a book.<br>"
-							return
-						if(usr.UsingBook)
-							usr.Delete("Book")
-							for(var/obj/Misc/Spells/S in usr.client.screen)
-								usr.client.screen -= S
-							for(var/obj/Misc/SpellText/T in usr.client.screen)
-								usr.client.screen -= T
-							usr.UsingBook = null
-							view() << "<font color = yellow>[usr] closes a book.<br>"
-							return
-					if(usr.Function == "Examine")
-						usr << "<font color = teal>[src.desc]<br>"
-						return
-					if(usr.Function == "PickUp")
-						if(src.suffix == "Carried" && src in usr)
-							src.loc = usr.loc
-							src.suffix = null
-							src.layer = 4
-							src.overlays = null
-							usr.client.screen -= src
-							usr.Weight -= src.Weight
-							view() << "<b>[usr] drops [src]<br>"
-							for(var/obj/HUD/Text/T in usr.client.screen)
-								if(T.Type == "Weight")
-									del(T)
-							if(usr.InvenUp)
-								usr.Text("Weight",usr,4,15,0,10,"Weight - [usr.Weight]/[usr.WeightMax]")
-							usr.Delete("ScrollMiddle","BoxDelete")
-							return
-						if(usr in range(1,src))
-							if(src.suffix == null)
-								if(usr.Weight <= usr.WeightMax)
-									src.loc = usr
-									src.suffix = "Carried"
-									usr.Weight += src.Weight
-									src.overlays+=image(/obj/HUD/C/)
-									if(usr.InvenUp)
-										usr.DeleteInventoryMenu()
-										usr.CreateInventory()
-									view() << "<b>[usr] picks up [src]<br>"
-									return
-								else
-									usr << "<b>You cant carry too much weight!<br>"
-									return
-							else
-								usr << "<b>You cant pick that item up!<br>"
-								return
 			Book_of_Necromancy
 				Fuel = 30
 				icon_state = "necromancy book"

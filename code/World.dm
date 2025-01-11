@@ -48,8 +48,6 @@ proc/WorldTick()
 
 	Month = 0
 
-	WorldName = 0
-
 	Night = 1
 
 	BanList = list()
@@ -64,8 +62,6 @@ proc/WorldTick()
 
 	Ruining = 0
 
-	CanJoin = 1
-
 	Players = list()
 
 	WorldStrCap = 22
@@ -75,8 +71,6 @@ proc/WorldTick()
 	WorldSkillsCap = 22
 
 	GainRate = 0
-
-	MapSaves = 0
 
 	Ranks = "<font color = teal><font size = 3>.:Human Kingdom:.<p>King - <br>Queen - <br>Priest - <p>.:Altherian Kingdom:.<p>King - <br>Queen - <br><p>.:Stahlite Kingdom:.<p>King - <br>Queen - <br><p>.:Frogman Kingdom:.<p>King - <br>Queen - <br><p>.:Snakeman Kingdom:.<p>Emperor - <br>Emperess - <br><p>.:Giant Kingdom:.<p>Leader - <p>.:Cyclops Hordes:.<p>Warlord - <p>.:Ratling Hordes:.<p>Plague King - <br>Plague Queen - <br>"
 	Notes = ""

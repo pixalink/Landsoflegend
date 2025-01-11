@@ -193,8 +193,6 @@ mob
 
 		MortalWound = 0
 
-		Class = null
-
 		SpreadsAffliction = null
 
 		Jailed = 0
@@ -209,9 +207,6 @@ mob
 		RPpoints = 0
 
 		InWater = 0
-
-		SpeakingWith = null
-		FollowUp = null
 
 		StoredFaction = null
 		PreviousFaction = null
@@ -587,8 +582,6 @@ atom
 		BloodColour = null
 obj
 	var
-		BodysKey = null
-
 		EquipState = null
 		CarryState = null
 		ItemLayer = 0
