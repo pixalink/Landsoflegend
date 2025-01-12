@@ -9,7 +9,6 @@ client
 
 	New()
 		src.MapTextObj = new()
-		//src.MapTextObj.screen_loc = "NORTH:-4,WEST:20"
 		src.MapTextObj.screen_loc = "SOUTH+1:4,WEST:20"
 		src.MapTextObj.maptext_width = 480
 		src.MapTextObj.maptext_height = 32
@@ -296,16 +295,16 @@ mob
 			var/obj/F = new/obj/HUD/Menus/Inventory/LeftMiddle(src.client)
 			var/obj/G = new/obj/HUD/Menus/Inventory/RightMiddle(src.client)
 			var/obj/Cl = new/obj/HUD/Menus/Inventory/CloseMasonary(src.client)
-			H.screen_loc = "2,2 to 12,10"
-			O.screen_loc = "2,10"
-			A.screen_loc = "12,10"
-			B.screen_loc = "2,2"
-			C.screen_loc = "12,2"
-			D.screen_loc = "2,10 to 12,10"
-			E.screen_loc = "2,2 to 12,2"
-			F.screen_loc = "2,2 to 2,10"
-			G.screen_loc = "12,2 to 12,10"
-			Cl.screen_loc = "12,2"
+			H.screen_loc = "2,3 to 12,11"
+			O.screen_loc = "2,11"
+			A.screen_loc = "12,11"
+			B.screen_loc = "2,3"
+			C.screen_loc = "12,3"
+			D.screen_loc = "2,11 to 12,11"
+			E.screen_loc = "2,3 to 12,3"
+			F.screen_loc = "2,3 to 2,11"
+			G.screen_loc = "12,3 to 12,11"
+			Cl.screen_loc = "12,3"
 			src.client.screen += H
 			src.client.screen += O
 			src.client.screen += A
@@ -325,9 +324,9 @@ mob
 			E.Type = "Masonary"
 			F.Type = "Masonary"
 			G.Type = "Masonary"
-			src.Text("Masonary",src,4,10,0,10,"--Masonary Menu--")
+			src.Text("Masonary",src,4,11,0,10,"--Masonary Menu--")
 			var/X = 3
-			var/Y = 9
+			var/Y = 10
 			if(Stone)
 				for(var/obj/Items/I in src.CreateList)
 					if(I.Material == Stone.Material)
@@ -355,16 +354,16 @@ mob
 			var/obj/F = new/obj/HUD/Menus/Inventory/LeftMiddle(src.client)
 			var/obj/G = new/obj/HUD/Menus/Inventory/RightMiddle(src.client)
 			var/obj/Cl = new/obj/HUD/Menus/Inventory/CloseCarpentry(src.client)
-			H.screen_loc = "2,2 to 12,10"
-			O.screen_loc = "2,10"
-			A.screen_loc = "12,10"
-			B.screen_loc = "2,2"
-			C.screen_loc = "12,2"
-			D.screen_loc = "2,10 to 12,10"
-			E.screen_loc = "2,2 to 12,2"
-			F.screen_loc = "2,2 to 2,10"
-			G.screen_loc = "12,2 to 12,10"
-			Cl.screen_loc = "12,2"
+			H.screen_loc = "2,3 to 12,11"
+			O.screen_loc = "2,11"
+			A.screen_loc = "12,11"
+			B.screen_loc = "2,3"
+			C.screen_loc = "12,3"
+			D.screen_loc = "2,11 to 12,11"
+			E.screen_loc = "2,3 to 12,3"
+			F.screen_loc = "2,3 to 2,11"
+			G.screen_loc = "12,3 to 12,11"
+			Cl.screen_loc = "12,3"
 			src.client.screen += H
 			src.client.screen += O
 			src.client.screen += A
@@ -384,9 +383,9 @@ mob
 			E.Type = "Carpentry"
 			F.Type = "Carpentry"
 			G.Type = "Carpentry"
-			src.Text("Carpentry",src,4,10,0,10,"--Carpentry Menu--")
+			src.Text("Carpentry",src,4,11,0,10,"--Carpentry Menu--")
 			var/X = 3
-			var/Y = 9
+			var/Y = 10
 			if(Wood)
 				for(var/obj/Items/I in src.CreateList)
 					if(I.Material == Wood.Material)
@@ -414,16 +413,16 @@ mob
 			var/obj/F = new/obj/HUD/Menus/Inventory/LeftMiddle(src.client)
 			var/obj/G = new/obj/HUD/Menus/Inventory/RightMiddle(src.client)
 			var/obj/Cl = new/obj/HUD/Menus/Inventory/CloseBone(src.client)
-			H.screen_loc = "2,2 to 12,10"
-			O.screen_loc = "2,10"
-			A.screen_loc = "12,10"
-			B.screen_loc = "2,2"
-			C.screen_loc = "12,2"
-			D.screen_loc = "2,10 to 12,10"
-			E.screen_loc = "2,2 to 12,2"
-			F.screen_loc = "2,2 to 2,10"
-			G.screen_loc = "12,2 to 12,10"
-			Cl.screen_loc = "12,2"
+			H.screen_loc = "2,3 to 12,11"
+			O.screen_loc = "2,11"
+			A.screen_loc = "12,11"
+			B.screen_loc = "2,3"
+			C.screen_loc = "12,3"
+			D.screen_loc = "2,11 to 12,11"
+			E.screen_loc = "2,3 to 12,3"
+			F.screen_loc = "2,3 to 2,11"
+			G.screen_loc = "12,3 to 12,11"
+			Cl.screen_loc = "12,3"
 			src.client.screen += H
 			src.client.screen += O
 			src.client.screen += A
@@ -443,9 +442,9 @@ mob
 			E.Type = "Bone"
 			F.Type = "Bone"
 			G.Type = "Bone"
-			src.Text("Bone",src,4,10,0,10,"--Bone Menu--")
+			src.Text("Bone",src,4,11,0,10,"--Bone Menu--")
 			var/X = 3
-			var/Y = 9
+			var/Y = 10
 			if(Bone)
 				for(var/obj/Items/I in src.CreateList)
 					if(I.Material == Bone.Material)
@@ -473,16 +472,16 @@ mob
 			var/obj/F = new/obj/HUD/Menus/Inventory/LeftMiddle(src.client)
 			var/obj/G = new/obj/HUD/Menus/Inventory/RightMiddle(src.client)
 			var/obj/Cl = new/obj/HUD/Menus/Inventory/CloseLeather(src.client)
-			H.screen_loc = "2,2 to 12,10"
-			O.screen_loc = "2,10"
-			A.screen_loc = "12,10"
-			B.screen_loc = "2,2"
-			C.screen_loc = "12,2"
-			D.screen_loc = "2,10 to 12,10"
-			E.screen_loc = "2,2 to 12,2"
-			F.screen_loc = "2,2 to 2,10"
-			G.screen_loc = "12,2 to 12,10"
-			Cl.screen_loc = "12,2"
+			H.screen_loc = "2,3 to 12,11"
+			O.screen_loc = "2,11"
+			A.screen_loc = "12,11"
+			B.screen_loc = "2,3"
+			C.screen_loc = "12,3"
+			D.screen_loc = "2,11 to 12,11"
+			E.screen_loc = "2,3 to 12,3"
+			F.screen_loc = "2,3 to 2,11"
+			G.screen_loc = "12,3 to 12,11"
+			Cl.screen_loc = "12,3"
 			src.client.screen += H
 			src.client.screen += O
 			src.client.screen += A
@@ -502,9 +501,9 @@ mob
 			E.Type = "Leather"
 			F.Type = "Leather"
 			G.Type = "Leather"
-			src.Text("Leather",src,4,10,0,10,"--Leather Menu--")
+			src.Text("Leather",src,4,11,0,10,"--Leather Menu--")
 			var/X = 3
-			var/Y = 9
+			var/Y = 10
 			if(Leather)
 				for(var/obj/Items/I in src.CreateList)
 					if(I.Material == Leather.Material)
@@ -532,16 +531,16 @@ mob
 			var/obj/F = new/obj/HUD/Menus/Inventory/LeftMiddle(src.client)
 			var/obj/G = new/obj/HUD/Menus/Inventory/RightMiddle(src.client)
 			var/obj/Cl = new/obj/HUD/Menus/Inventory/CloseForgeing(src.client)
-			H.screen_loc = "2,2 to 12,13"
-			O.screen_loc = "2,13"
-			A.screen_loc = "12,13"
-			B.screen_loc = "2,2"
-			C.screen_loc = "12,2"
-			D.screen_loc = "2,13 to 12,13"
-			E.screen_loc = "2,2 to 12,2"
-			F.screen_loc = "2,2 to 2,13"
-			G.screen_loc = "12,2 to 12,13"
-			Cl.screen_loc = "12,2"
+			H.screen_loc = "2,3 to 12,11"
+			O.screen_loc = "2,11"
+			A.screen_loc = "12,11"
+			B.screen_loc = "2,3"
+			C.screen_loc = "12,3"
+			D.screen_loc = "2,11 to 12,11"
+			E.screen_loc = "2,3 to 12,3"
+			F.screen_loc = "2,3 to 2,11"
+			G.screen_loc = "12,3 to 12,11"
+			Cl.screen_loc = "12,3"
 			src.client.screen += H
 			src.client.screen += O
 			src.client.screen += A
@@ -561,7 +560,7 @@ mob
 			E.Type = "Forge"
 			F.Type = "Forge"
 			G.Type = "Forge"
-			src.Text("Forge",src,4,13,0,10,"--Forge Menu--")
+			src.Text("Forge",src,4,14,0,10,"--Forge Menu--")
 			var/X = 3
 			var/Y = 12
 			if(Ingot)
@@ -595,22 +594,22 @@ mob
 			var/obj/B4 = new/obj/HUD/Menus/Buildings/WoodenFloor(src.client)
 			var/obj/B5 = new/obj/HUD/Menus/Buildings/WoodenWall(src.client)
 			var/obj/B6 = new/obj/HUD/Menus/Buildings/StoneStairs(src.client)
-			H.screen_loc = "2,2 to 8,6"
-			O.screen_loc = "2,6"
-			A.screen_loc = "8,6"
-			B.screen_loc = "2,2"
-			C.screen_loc = "8,2"
-			D.screen_loc = "2,6 to 8,6"
-			E.screen_loc = "2,2 to 8,2"
-			F.screen_loc = "2,2 to 2,6"
-			G.screen_loc = "8,2 to 8,6"
+			H.screen_loc = "2,3 to 8,7"
+			O.screen_loc = "2,7"
+			A.screen_loc = "8,7"
+			B.screen_loc = "2,3"
+			C.screen_loc = "8,3"
+			D.screen_loc = "2,7 to 8,7"
+			E.screen_loc = "2,3 to 8,3"
+			F.screen_loc = "2,3 to 2,7"
+			G.screen_loc = "8,3 to 8,7"
 
-			B1.screen_loc = "3,5"
-			B2.screen_loc = "5,5"
-			B3.screen_loc = "7,5"
-			B4.screen_loc = "3,3"
-			B5.screen_loc = "5,3"
-			B6.screen_loc = "7,3"
+			B1.screen_loc = "3,6"
+			B2.screen_loc = "5,6"
+			B3.screen_loc = "7,6"
+			B4.screen_loc = "3,4"
+			B5.screen_loc = "5,4"
+			B6.screen_loc = "7,4"
 			src.client.screen += H
 			src.client.screen += O
 			src.client.screen += A
@@ -641,7 +640,7 @@ mob
 			B4.Type = "Building"
 			B5.Type = "Building"
 			B6.Type = "Building"
-			src.Text("Building",src,2,6,55,10,"--Build Menu--")
+			src.Text("Building",src,2,7,55,10,"--Build Menu--")
 			return
 		CheckContainer(var/obj/Con)
 			var/NearCon = 0
@@ -3260,7 +3259,7 @@ obj
 			AdminButton
 				icon_state = "admin button off"
 				Type = "AdminButton"
-				screen_loc = "1,2"
+				screen_loc = "15,2"
 				layer = 10
 				Click()
 					if(usr.Admin)
@@ -3286,7 +3285,7 @@ obj
 			IllithidPowers
 				name = "Powers"
 				icon_state = "illithid powers"
-				screen_loc = "15,2"
+				screen_loc = "15,3"
 				layer = 10
 				Click()
 					if(usr.Dead)
