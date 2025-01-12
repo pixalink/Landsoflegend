@@ -49,6 +49,148 @@ var/writing
 
 mob
 	proc
+		ResetButtons()
+			if(src)
+				if(src.client)
+					src.client.mouse_pointer_icon = 'Cursor.dmi'
+					for(var/obj/HUD/B in src.client.screen)
+						if(B.Type == "Interact")
+							if(src.Target && B.icon_state == "int on")
+								src << "<b>Target lost!<br>"
+								var/mob/m = src.Target
+								src.client.images -= m.TargetIcon
+								if(m.client)
+									if(src.Target in range(6,src))
+										view(src) << "<font color = yellow> [src] stands down from combat while facing in [src.Target]'s direction!<br>"
+								src.Target = null
+							B.icon_state = "int off"
+						if(B.Type == "PickUp")
+							if(src.Target && B.icon_state == "pick on")
+								src << "<b>Target lost!<br>"
+								var/mob/m = src.Target
+								src.client.images -= m.TargetIcon
+								if(m.client)
+									if(src.Target in range(6,src))
+										view(src) << "<font color = yellow> [src] stands down from combat while facing in [src.Target]'s direction!<br>"
+								src.Target = null
+							B.icon_state = "pick off"
+						if(B.Type == "Examine")
+							if(src.Target && B.icon_state == "examine on")
+								src << "<b>Target lost!<br>"
+								var/mob/m = src.Target
+								src.client.images -= m.TargetIcon
+								if(m.client)
+									if(src.Target in range(6,src))
+										view(src) << "<font color = yellow> [src] stands down from combat while facing in [src.Target]'s direction!<br>"
+								src.Target = null
+							B.icon_state = "examine off"
+						if(B.Type == "Pull")
+							if(src.Target && B.icon_state == "pull on")
+								src << "<b>Target lost!<br>"
+								var/mob/m = src.Target
+								src.client.images -= m.TargetIcon
+								if(m.client)
+									if(src.Target in range(6,src))
+										view(src) << "<font color = yellow> [src] stands down from combat while facing in [src.Target]'s direction!<br>"
+								src.Target = null
+							B.icon_state = "pull off"
+						if(B.Type == "Equip")
+							B.icon_state = "equip button off"
+						if(B.Type == "Skill")
+							if(B.icon_state == "skills on")
+								src.Delete("SkillDisplay","SkillDisplay")
+								B.icon_state = "skills off"
+						if(B.Type == "Build")
+							if(B.icon_state == "build on")
+								src.Delete("Building","Building")
+								B.icon_state = "build off"
+						if(B.Type == "Stats")
+							if(B.icon_state == "stats on")
+								src.Delete("InfoDisplay","InfoDisplay")
+								B.icon_state = "stats off"
+						if(B.Type == "Health")
+							if(B.icon_state == "health on")
+								src.Delete("HealthDisplay","HealthDisplay")
+								B.icon_state = "health off"
+						if(B.Type == "Combat")
+							if(B.icon_state == "combat on")
+								B.icon_state = "combat off"
+			return
+		CreateGUI()
+			var/obj/HUD/GUI/ScreenOverlay/SO = new
+			src.client.screen += SO
+
+			var/obj/HUD/GUI/SW/SW = new
+			src.client.screen += SW
+			var/obj/HUD/GUI/NW/NW = new
+			src.client.screen += NW
+			var/obj/HUD/GUI/SE/SE = new
+			src.client.screen += SE
+			var/obj/HUD/GUI/NE/NE = new
+			src.client.screen += NE
+			var/obj/HUD/GUI/N/N = new
+			src.client.screen += N
+			var/obj/HUD/GUI/S/S = new
+			src.client.screen += S
+			var/obj/HUD/GUI/E/E = new
+			src.client.screen += E
+			var/obj/HUD/GUI/W/W = new
+			src.client.screen += W
+
+			var/obj/HUD/Buttons/Interact/Int = new
+			src.client.screen += Int
+			var/obj/HUD/Buttons/GameInfo/Help = new
+			src.client.screen += Help
+			var/obj/HUD/Buttons/PickUp/Pick = new
+			src.client.screen += Pick
+			var/obj/HUD/Buttons/Examine/Exa = new
+			src.client.screen += Exa
+			var/obj/HUD/Buttons/Inventory/Inv = new
+			src.client.screen += Inv
+			var/obj/HUD/Buttons/CombatMode/Com = new
+			src.client.screen += Com
+			var/obj/HUD/Buttons/Pull/Pul = new
+			src.client.screen += Pul
+			var/obj/HUD/Buttons/CharacterInfo/Info = new
+			src.client.screen += Info
+			var/obj/HUD/Buttons/HealthInfo/HInfo = new
+			src.client.screen += HInfo
+			var/obj/HUD/Buttons/SkillInfo/SInfo = new
+			src.client.screen += SInfo
+			var/obj/HUD/Buttons/OOC/OOC = new
+			src.client.screen += OOC
+			var/obj/HUD/Buttons/Say/Say = new
+			src.client.screen += Say
+			var/obj/HUD/Buttons/Build/B = new
+			src.client.screen += B
+			var/obj/HUD/Buttons/RolePlay/RP = new
+			src.client.screen += RP
+			var/obj/HUD/Buttons/LeftHand/Left = new
+			src.client.screen += Left
+			if(src.CurrentHand == "Left")
+				Left.icon_state = "left hand on"
+			var/obj/HUD/Buttons/RightHand/Right = new
+			src.client.screen += Right
+			if(src.CurrentHand == "Right")
+				Right.icon_state = "right hand on"
+
+			var/obj/HUD/GUI/BloodBar/BB = new
+			src.client.screen += BB
+
+			var/IsAdmin = 0
+			for(var/obj/Misc/Admins/Z in Admins)
+				if(Z.name == src.key)
+					IsAdmin = 1
+					src.Admin = Z.Value
+			if(IsAdmin == 1)
+				var/obj/HUD/AdminButtons/AdminButton/A = new
+				src.client.screen += A
+			else
+				src.Admin = 0
+			if(src.Race == "Illithid")
+				var/obj/HUD/Buttons/IllithidPowers/IP = new
+				src.client.screen += IP
+			return
 		DeleteInventoryMenu()
 			for(var/obj/HUD/Menus/Buildings/O in src.client.screen)
 				del(O)
