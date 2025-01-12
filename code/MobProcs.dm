@@ -2293,7 +2293,11 @@ mob
 				src.Blood = 120
 				src.BloodMax = 120
 				src.Born = Year
-				src.FindSuitableLocation()
+				var/Locs = rand(1,2)
+				if(Locs == 1)
+					src.loc = locate(9,12,1)
+				if(Locs == 2)
+					src.loc = locate(131,247,1)
 				for(var/mob/M in Players)
 					if(M.Race == src.Race && M.Gender == "Female" && M.Preg == 2)
 						if(src.client.address == M.client.address && M != src)
