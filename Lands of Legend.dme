@@ -12,6 +12,7 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
+#include "skin.dmf"
 #include "code\AntiSpam.dm"
 #include "code\Atoms.dm"
 #include "code\Client.dm"
