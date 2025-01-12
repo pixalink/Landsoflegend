@@ -165,15 +165,6 @@ mob
 			src.client.screen += B
 			var/obj/HUD/Buttons/RolePlay/RP = new
 			src.client.screen += RP
-			var/obj/HUD/Buttons/LeftHand/Left = new
-			src.client.screen += Left
-			if(src.CurrentHand == "Left")
-				Left.icon_state = "left hand on"
-			var/obj/HUD/Buttons/RightHand/Right = new
-			src.client.screen += Right
-			if(src.CurrentHand == "Right")
-				Right.icon_state = "right hand on"
-
 			var/obj/HUD/GUI/BloodBar/BB = new
 			src.client.screen += BB
 
@@ -728,6 +719,7 @@ mob
 			var/obj/G = new/obj/HUD/Menus/Inventory/RightMiddle(src.client)
 			var/obj/Eat = new/obj/HUD/Menus/Inventory/Eat(src.client)
 			var/obj/Equip = new/obj/HUD/Menus/Inventory/Equip(src.client)
+
 			H.screen_loc = "1,8 to 7,15"
 			Slot.screen_loc = "2,9 to 6,14"
 			O.screen_loc = "1,15"
@@ -753,6 +745,17 @@ mob
 			src.client.screen += G
 			src.client.screen += Eat
 			src.client.screen += Equip
+
+			var/obj/HUD/Menus/Inventory/LeftHand/Left = new(src.client)
+			Left.screen_loc = "5,8:8"
+			src.client.screen += Left
+			if(src.CurrentHand == "Left")
+				Left.icon_state = "left hand on"
+			var/obj/HUD/Menus/Inventory/RightHand/Right = new(src.client)
+			Right.screen_loc = "6,8:8"
+			src.client.screen += Right
+			if(src.CurrentHand == "Right")
+				Right.icon_state = "right hand on"
 
 			src.Text("Inventory",src,1,15,13,10,"Inventory")
 			src.Text("Weight",src,4,15,0,10,"Weight - [round(src.Weight, 0.01)]/[round(src.WeightMax, 0.01)]")
@@ -1848,6 +1851,40 @@ obj
 				Slot
 					icon_state = "inv slot"
 					icon = 'HUD.dmi'
+				LeftHand
+					name = "LeftHand"
+					icon = 'HUD2.dmi'
+					icon_state = "left hand"
+					Type = "LeftHand"
+					layer = 11
+					Click()
+						if(usr.LeftArm)
+							if(usr.CurrentHand == "Right")
+								usr.CurrentHand = "Left"
+								src.icon_state = "left hand on"
+								for(var/obj/HUD/Menus/Inventory/RightHand/R in usr.client.screen)
+									R.icon_state = "right hand"
+								return
+						else
+							usr << "<font color = red>Your Left Arm is gone!<br>"
+							return
+				RightHand
+					name = "RightHand"
+					icon = 'HUD2.dmi'
+					icon_state = "right hand"
+					Type = "RightHand"
+					layer = 11
+					Click()
+						if(usr.RightArm)
+							if(usr.CurrentHand == "Left")
+								usr.CurrentHand = "Right"
+								src.icon_state = "right hand on"
+								for(var/obj/HUD/Menus/Inventory/LeftHand/L in usr.client.screen)
+									L.icon_state = "left hand"
+								return
+						else
+							usr << "<font color = red>Your Right Arm is gone!<br>"
+							return
 		RaceSelection
 			icon = 'menu.dmi'
 			layer = 100
@@ -4049,40 +4086,6 @@ obj
 								SayLength -= 1
 								usr.RPpoints += 0.0005
 					usr.Log_player("([usr.key])[usr] IC - [T]")
-			LeftHand
-				name = "LeftHand"
-				icon_state = "left hand"
-				Type = "LeftHand"
-				screen_loc = "13,2"
-				layer = 10
-				Click()
-					if(usr.LeftArm)
-						if(usr.CurrentHand == "Right")
-							usr.CurrentHand = "Left"
-							src.icon_state = "left hand on"
-							for(var/obj/HUD/Buttons/RightHand/R in usr.client.screen)
-								R.icon_state = "right hand"
-							return
-					else
-						usr << "<font color = red>Your Left Arm is gone!<br>"
-						return
-			RightHand
-				name = "RightHand"
-				icon_state = "right hand"
-				Type = "RightHand"
-				screen_loc = "14,2"
-				layer = 10
-				Click()
-					if(usr.RightArm)
-						if(usr.CurrentHand == "Left")
-							usr.CurrentHand = "Right"
-							src.icon_state = "right hand on"
-							for(var/obj/HUD/Buttons/LeftHand/L in usr.client.screen)
-								L.icon_state = "left hand"
-							return
-					else
-						usr << "<font color = red>Your Right Arm is gone!<br>"
-						return
 			Examine
 				name = "Examine-(E)"
 				icon_state = "examine off"
