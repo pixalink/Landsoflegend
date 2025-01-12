@@ -1722,6 +1722,10 @@ obj
 			Stone
 				icon = 'materials.dmi'
 				icon_state = "stone"
+				Weight = 40
+				New()
+					src.pixel_x = rand(-16,16)
+					src.pixel_y = rand(-16,16)
 				Click()
 					if(usr.Function == "Transfer")
 						if(usr.Container)
@@ -1820,6 +1824,40 @@ obj
 												if(usr)
 													usr << "<font color = red>The [src] was moved, job failed!<br>"
 													usr.MovementCheck()
+					if(usr.Function == "PickUp")
+						if(src.suffix == "Carried" && src in usr)
+							src.overlays = null
+							src.loc = usr.loc
+							src.suffix = null
+							src.layer = 4
+							usr.client.screen -= src
+							usr.Weight -= src.Weight
+							view() << "<b>[usr] drops [src]<br>"
+							for(var/obj/HUD/Text/T in usr.client.screen)
+								if(T.Type == "Weight")
+									del(T)
+							if(usr.InvenUp)
+								usr.Text("Weight",usr,4,15,0,10,"Weight - [usr.Weight]/[usr.WeightMax]")
+							usr.Delete("ScrollMiddle","BoxDelete")
+							return
+						if(usr in range(1,src))
+							if(src.suffix == null)
+								if(usr.Weight <= usr.WeightMax)
+									src.loc = usr
+									src.suffix = "Carried"
+									usr.Weight += src.Weight
+									src.overlays+=image(/obj/HUD/C/)
+									if(usr.InvenUp)
+										usr.DeleteInventoryMenu()
+										usr.CreateInventory()
+									view() << "<b>[usr] picks up [src]<br>"
+									return
+								else
+									usr << "<b>You cant carry too much weight!<br>"
+									return
+							else
+								usr << "<b>You cant pick that item up!<br>"
+								return
 					if(usr.Function == "Pull")
 						if(src in range(1,usr))
 							if(usr.Pull == src)
