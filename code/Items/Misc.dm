@@ -1457,7 +1457,7 @@ obj
 							if(Arms == 0)
 								usr << "<font color=red>You have no arms, you can not use this item!<br>"
 								return
-							var/Heal = rand(2,5)
+							var/Heal = rand(4,7)
 							Heal += usr.FirstAidSkill
 							var/list/menu = new()
 							for(var/mob/M in range(1,usr))
@@ -1472,98 +1472,114 @@ obj
 										if(M.Target)
 											usr << "<font color = red>[M] has a target, they are busy fighting!<br>"
 											return
-										view(usr) << "<b>[usr] uses a [src] on [M]!<br>"
-										var/EXPHeal = 0
-										if(M.MortalWound)
-											var/HealWound = prob(10)
-											if(HealWound)
-												M.MortalWound = 0
-										if(M.RightArm)
-											if(M.RightArm < 100)
-												EXPHeal = 1
-											M.RightArm += Heal
-											if(src.WoundRightArm)
-												var/RemoveWound = prob(25)
-												if(RemoveWound)
-													src.overlays -= src.WoundRightArm
-													src.WoundRightArm = null
-											if(M.RightArm >= 100)
-												M.RightArm = 100
-										if(M.LeftArm)
-											if(M.LeftArm < 100)
-												EXPHeal = 1
-											M.LeftArm += Heal
-											if(src.WoundLeftArm)
-												var/RemoveWound = prob(25)
-												if(RemoveWound)
-													src.overlays -= src.WoundLeftArm
-													src.WoundLeftArm = null
-											if(M.LeftArm >= 100)
-												M.LeftArm = 100
-										if(M.RightLeg)
-											if(M.RightLeg < 100)
-												EXPHeal = 1
-											M.RightLeg += Heal
-											if(src.WoundRightLeg)
-												var/RemoveWound = prob(25)
-												if(RemoveWound)
-													src.overlays -= src.WoundRightLeg
-													src.WoundRightLeg = null
-											if(M.RightLeg >= 100)
-												M.RightLeg = 100
-										if(M.LeftLeg)
-											if(M.LeftLeg < 100)
-												EXPHeal = 1
-											M.LeftLeg += Heal
-											if(src.WoundLeftLeg)
-												var/RemoveWound = prob(25)
-												if(RemoveWound)
-													src.overlays -= src.WoundLeftLeg
-													src.WoundLeftLeg = null
-											if(M.LeftLeg >= 100)
-												M.LeftLeg = 100
-										if(M.Nose)
-											if(M.Nose < 100)
-												EXPHeal = 1
-											M.Nose += Heal
-											if(M.Nose >= 100)
-												M.Nose = 100
-										if(M.LeftEar)
-											if(M.LeftEar < 100)
-												EXPHeal = 1
-											M.LeftEar += Heal
-											if(M.LeftEar >= 100)
-												M.LeftEar = 100
-										if(M.RightEar)
-											if(M.RightEar < 100)
-												EXPHeal = 1
-											M.RightEar += Heal
-											if(M.RightEar >= 100)
-												M.RightEar = 100
-										if(M.Throat)
-											if(M.Throat < 100)
-												EXPHeal = 1
-											M.Throat += Heal / 2
-											if(M.Throat >= 100)
-												M.Throat = 100
-										if(M.Skull)
-											if(M.Skull < 100)
-												EXPHeal = 1
-											M.Skull += Heal / 2
-											if(M.Skull >= 100)
-												M.Skull = 100
-										if(src.WoundTorso)
-											var/RemoveWound = prob(25)
-											if(RemoveWound)
-												src.overlays -= src.WoundTorso
-												src.WoundTorso = null
-										if(src.WoundHead)
-											var/RemoveWound = prob(25)
-											if(RemoveWound)
-												src.overlays -= src.WoundHead
-												src.WoundHead = null
-										if(M.Blood < M.BloodMax)
-											EXPHeal = 1
+
+										var/list/choices = new()
+										if(M.RightArm && M.RightArm < 100)
+											choices += "Right Arm"
+										if(M.LeftArm && M.LeftArm < 100)
+											choices += "Left Arm"
+										if(M.RightLeg && M.RightLeg < 100)
+											choices += "Right Leg"
+										if(M.LeftLeg && M.LeftLeg < 100)
+											choices += "Left Leg"
+										if(M.Nose && M.Nose < 100)
+											choices += "Nose"
+										if(M.LeftEar && M.LeftEar < 100)
+											choices += "Left Ear"
+										if(M.RightEar && M.RightEar < 100)
+											choices += "Right Ear"
+										if(M.Throat && M.Throat < 100)
+											choices += "Throat"
+
+										if(length(choices) < 1)
+											usr << "<font color = red>[M] is not wounded! Cannot apply a bandage.<br>"
+											return
+
+										choices += "Cancel"
+
+										var/HealWoundTorso = 0
+										var/HealWoundHead = 0
+										var/Area = input("Choose where to apply bandage.", "Choose", null) in choices
+										switch(Area)
+											if("Cancel")
+												return
+
+											if("Right Arm")
+												M.RightArm += Heal
+												if(M.RightArm > 100)
+													M.RightArm = 100
+
+												if(M.WoundRightArm && prob(25))
+													M.overlays -= M.WoundRightArm
+													M.WoundRightArm = null
+
+												HealWoundTorso = 1
+
+											if("Left Arm")
+												M.LeftArm += Heal
+												if(M.LeftArm > 100)
+													M.LeftArm = 100
+
+												if(M.WoundLeftArm && prob(25))
+													M.overlays -= M.WoundLeftArm
+													M.WoundLeftArm = null
+
+												HealWoundTorso = 1
+
+											if("Right Leg")
+												M.RightLeg += Heal
+												if(M.RightLeg > 100)
+													M.RightLeg = 100
+
+												if(M.WoundRightLeg && prob(25))
+													M.overlays -= M.WoundRightLeg
+													M.WoundRightLeg = null
+
+											if("Left Leg")
+												M.LeftLeg += Heal
+												if(M.LeftLeg > 100)
+													M.LeftLeg = 100
+
+												if(M.WoundLeftLeg && prob(25))
+													M.overlays -= M.WoundLeftLeg
+													M.WoundLeftLeg = null
+
+											if("Nose")
+												M.Nose += Heal
+												if(M.Nose > 100)
+													M.Nose = 100
+
+												HealWoundHead = 1
+
+											if("Left Ear")
+												M.LeftEar += Heal
+												if(M.LeftEar > 100)
+													M.LeftEar = 100
+
+												HealWoundHead = 1
+
+											if("Right Ear")
+												M.RightEar += Heal
+												if(M.RightEar > 100)
+													M.RightEar = 100
+
+												HealWoundHead = 1
+
+											if("Throat")
+												M.Throat += Heal
+												if(M.Throat > 100)
+													M.Throat = 100
+
+												HealWoundHead = 1
+										
+										if(M.MortalWound && prob(10))
+											M.MortalWound = 0
+										if(M.WoundTorso && HealWoundTorso && prob(25))
+											src.overlays -= src.WoundTorso
+											src.WoundTorso = null
+										if(src.WoundHead && HealWoundHead && prob(25))
+											src.overlays -= src.WoundHead
+											src.WoundHead = null
 										M.Blood += rand(10,20)
 										M.Blood += Heal / 2
 										M.Pain -= Heal
@@ -1573,11 +1589,11 @@ obj
 										if(M.Blood >= M.BloodMax)
 											M.Blood = M.BloodMax
 										M.Bleed()
-										if(EXPHeal)
-											usr.FirstAidSkill += usr.FirstAidSkillMulti
+										usr.FirstAidSkill += usr.FirstAidSkillMulti
 										usr.Weight -= src.Weight
+										view(usr) << "<b>[usr] uses a [src] on [M]'s [Area]!<br>"
 										del(src)
-										return
+										return		
 			InquisitionSeal
 				icon = 'misc.dmi'
 				icon_state = "eagle sign"
