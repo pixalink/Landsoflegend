@@ -947,7 +947,7 @@ mob
 				if(src.Target == null)
 					for(var/mob/M in oview(6,src))
 						if(M.Dead == 0)
-							if(M.Faction == "None" && Suspect == null)
+							if(M.Faction == "None" && Suspect == null && src.CaresAboutCloaks)
 								Suspect = M
 								src.Target = M.loc
 								M << "<font color = teal>[src] is coming to remove your cloak!<br>"
@@ -973,6 +973,8 @@ mob
 						if(M.z != src.z)
 							src.Target = null
 				if(src.Target == null)
+					if(src.CaresAboutCloaks)
+						spawn(20) src.CaresAboutCloaks = 0
 					step_towards(src,src.GuardLoc)
 			spawn(Delay) InquisitiveGuardAI(Suspect)
 		InquisitiveAI(var/mob/Suspect)
@@ -1023,7 +1025,7 @@ mob
 				if(src.Target == null)
 					for(var/mob/M in oview(6,src))
 						if(M.Dead == 0)
-							if(M.Faction == "None" && Suspect == null)
+							if(M.Faction == "None" && Suspect == null && src.CaresAboutCloaks)
 								Suspect = M
 								src.Target = M.loc
 								M << "<font color = teal>[src] is coming to remove your cloak!<br>"
@@ -1047,6 +1049,8 @@ mob
 						if(M.z != src.z)
 							src.Target = null
 				if(src.Target == null)
+					if(src.CaresAboutCloaks)
+						spawn(20) src.CaresAboutCloaks = 0
 					step_rand(src)
 			spawn(Delay) InquisitiveAI(Suspect)
 		NormalAI()

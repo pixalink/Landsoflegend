@@ -2,6 +2,14 @@ area
 	luminosity = 0
 	MapEdge
 		name = "Dense"
+	CareAboutCloaks
+		Enter(atom/a)
+			if(ismob(a))
+				for(var/mob/NPC/Good/Human_Inquisitor/I in range(6, a))
+					I.CaresAboutCloaks = 1
+				for(var/mob/NPC/Good/Human_Inquisitor_Patroler/P in range(6, a))
+					P.CaresAboutCloaks = 1
+			return 1
 	Cave
 		name = "Cave"
 		Enter(atom/a)
@@ -159,7 +167,7 @@ turf
 
 	luminosity = 1
 	icon = 'terrain.dmi'
-	
+
 	Title
 		icon = 'Title.bmp'
 		luminosity = 10

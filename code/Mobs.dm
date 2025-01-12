@@ -5,6 +5,8 @@ mob
 	var
 		PlayerSettings/Settings = new()
 
+		CaresAboutCloaks = 0
+
 		WHead = null
 		WChest = null
 		WUpperBody = null
