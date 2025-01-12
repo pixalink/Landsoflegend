@@ -1722,6 +1722,7 @@ obj
 			Stone
 				icon = 'materials.dmi'
 				icon_state = "stone"
+				layer = 2
 				Weight = 40
 				New()
 					src.pixel_x = rand(-16,16)
