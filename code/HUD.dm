@@ -4,6 +4,33 @@ mob
 		MouseLocationY = null
 		tmp/InvenUp = 0
 
+client
+	var/obj/MapTextObj
+
+	New()
+		src.MapTextObj = new()
+		//src.MapTextObj.screen_loc = "NORTH:-4,WEST:20"
+		src.MapTextObj.screen_loc = "SOUTH+1:4,WEST:20"
+		src.MapTextObj.maptext_width = 480
+		src.MapTextObj.maptext_height = 32
+		..()
+
+	proc/UpdateMapText(text)
+		src.MapTextObj.maptext = "<span style='-dm-text-outline: 1 black; color: white; font-weight: bold'>[text]</span>"
+		src.screen |= src.MapTextObj
+
+	proc/RemoveMapText()
+		src.screen -= src.MapTextObj
+
+atom
+	MouseEntered()
+		if(usr.LoggedIn)
+			usr.client.UpdateMapText(src.name)
+
+	MouseExited()
+		if(usr.LoggedIn)
+			usr.client.RemoveMapText()
+
 mob/proc
 	textlist(var/textlist)
 		writing=list();for(var/t=1,t<=length(textlist),t++)writing+=copytext(textlist,t,t+1)
@@ -968,6 +995,7 @@ mob
 
 obj
 	MouseEntered()
+		..()
 		if(src in usr)
 			if(src.suffix)
 				if(usr.InvenUp)
@@ -975,6 +1003,7 @@ obj
 					usr.MouseLocationY = src.Yloc
 					usr.Box()
 	MouseExited()
+		..()
 		usr.MouseLocationX = null
 		usr.MouseLocationY = null
 		usr.Delete("ScrollMiddle","BoxDelete")
