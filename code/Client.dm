@@ -43,8 +43,8 @@ client
 					for(var/obj/Items/Armour/A in mob)
 						if(A.suffix == "Equip")
 							Sink += A.Weight / 6
-					Sink -= usr.Strength / 4
-					Sink -= usr.SwimmingSkill / 4
+					Sink -= usr.Strength / 3
+					Sink -= usr.SwimmingSkill / 3
 					var/Sinks = prob(Sink)
 					if(Sinks)
 						view() << "<font color = yellow>[mob] sinks underwater due to what they are carrying!<br>"

@@ -379,7 +379,7 @@ turf
 						if(src.icon_state == "underwater floor" && usr.Fainted == 0)
 							if(usr.CantDoTask == 0)
 								usr.CantDoTask = 1
-								var/Delay = rand(100,150)
+								var/Delay = rand(50,75)
 								if(usr.LeftLeg == 0)
 									Delay += 25
 								if(usr.RightLeg == 0)
@@ -391,11 +391,11 @@ turf
 								spawn(Delay)
 									if(usr)
 										usr.CantDoTask = 0
-								view() << "<font color = yellow>[usr] begins to swims up!<br>"
+								view() << "<font color = yellow>[usr] begins to swim up!<br>"
 								var/Sink = 0
-								Sink += usr.Weight / 5
-								Sink -= usr.Strength / 4
-								Sink -= usr.SwimmingSkill / 4
+								Sink += usr.Weight / 6
+								Sink -= usr.Strength / 3
+								Sink -= usr.SwimmingSkill / 3
 								var/Sinks = prob(Sink)
 								if(Sinks)
 									view() << "<font color = yellow>[usr] sinks back down again!<br>"
