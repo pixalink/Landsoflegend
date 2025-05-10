@@ -37,7 +37,7 @@ obj
 												usr.WoodCuttingSkill += usr.WoodCuttingSkillMulti / 3
 												usr.GainStats(2.5)
 												return
-							if(src.density == 0)
+							if(src.opacity == 0)
 								return
 							if(usr.Weapon)
 								var/obj/W = null
@@ -133,7 +133,7 @@ obj
 												usr.WoodCuttingSkill += usr.WoodCuttingSkillMulti / 3
 												usr.GainStats(2.5)
 												return
-							if(src.density == 0)
+							if(src.opacity == 0)
 								return
 							var/obj/W = null
 							var/CanDo = 0
@@ -259,7 +259,7 @@ obj
 												usr.WoodCuttingSkill += usr.WoodCuttingSkillMulti / 3
 												usr.GainStats(2.5)
 												return
-							if(src.density == 0)
+							if(src.opacity == 0)
 								return
 							if(usr.Weapon)
 								var/obj/W = null
@@ -356,7 +356,7 @@ obj
 												usr.WoodCuttingSkill += usr.WoodCuttingSkillMulti / 3
 												usr.GainStats(2.5)
 												return
-							if(src.density == 0)
+							if(src.opacity == 0)
 								return
 							var/obj/W = null
 							var/CanDo = 0
