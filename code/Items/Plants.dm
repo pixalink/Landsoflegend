@@ -37,7 +37,7 @@ obj
 												usr.WoodCuttingSkill += usr.WoodCuttingSkillMulti / 3
 												usr.GainStats(2.5)
 												return
-							if(src.opacity == 0)
+							if(src.density == 0)
 								return
 							if(usr.Weapon)
 								var/obj/W = null
@@ -71,7 +71,7 @@ obj
 											if(src)
 												if(usr)
 													if(src in range(1,usr))
-														if(usr.Job == "CutTree" && src.opacity)
+														if(usr.Job == "CutTree" && src.density)
 															usr.Job = null
 															src.icon_state = "small stump"
 															src.overlays = null
@@ -133,7 +133,7 @@ obj
 												usr.WoodCuttingSkill += usr.WoodCuttingSkillMulti / 3
 												usr.GainStats(2.5)
 												return
-							if(src.opacity == 0)
+							if(src.density == 0)
 								return
 							var/obj/W = null
 							var/CanDo = 0
@@ -165,7 +165,7 @@ obj
 									spawn(Time)
 										if(src && usr)
 											if(src in range(1,usr))
-												if(usr.Job == "CutTree" && src.opacity)
+												if(usr.Job == "CutTree" && src.density)
 													usr.Job = null
 													src.icon_state = "small stump"
 													src.overlays = null
@@ -259,7 +259,7 @@ obj
 												usr.WoodCuttingSkill += usr.WoodCuttingSkillMulti / 3
 												usr.GainStats(2.5)
 												return
-							if(src.opacity == 0)
+							if(src.density == 0)
 								return
 							if(usr.Weapon)
 								var/obj/W = null
@@ -292,7 +292,7 @@ obj
 										spawn(Time)
 											if(src && usr)
 												if(src in range(1,usr))
-													if(usr.Job == "CutTree" && src.opacity)
+													if(usr.Job == "CutTree" && src.density)
 														usr.Job = null
 														src.icon_state = "big stump"
 														src.overlays = null
@@ -356,7 +356,7 @@ obj
 												usr.WoodCuttingSkill += usr.WoodCuttingSkillMulti / 3
 												usr.GainStats(2.5)
 												return
-							if(src.opacity == 0)
+							if(src.density == 0)
 								return
 							var/obj/W = null
 							var/CanDo = 0
@@ -388,7 +388,7 @@ obj
 									spawn(Time)
 										if(src && usr)
 											if(src in range(1,usr))
-												if(usr.Job == "CutTree" && src.opacity)
+												if(usr.Job == "CutTree" && src.density)
 													usr.Job = null
 													src.icon_state = "big stump"
 													src.overlays = null
